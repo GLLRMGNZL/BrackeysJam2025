@@ -9,6 +9,8 @@ public class MouseClick : MonoBehaviour
     private Transform selection;
     private RaycastHit raycastHit;
 
+    public WorldStatsUI worldStatsUI;
+
     private void Update()
     {
         CheckSelectionOnClick();
@@ -55,13 +57,16 @@ public class MouseClick : MonoBehaviour
                 {
                     selection.gameObject.GetComponent<Outline>().enabled = false;
                 }
-                selection = raycastHit.transform;
-                selection.gameObject.GetComponent<Outline>().enabled = true;
+                    selection = raycastHit.transform;
+                    selection.gameObject.GetComponent<Outline>().enabled = true;
 
-                highlight.gameObject.GetComponent<Outline>().OutlineColor = Color.blue;
-                highlight.gameObject.GetComponent<Outline>().OutlineWidth = 20f;
+                    highlight.gameObject.GetComponent<Outline>().OutlineColor = Color.blue;
+                    highlight.gameObject.GetComponent<Outline>().OutlineWidth = 20f;
 
-                Debug.Log("Objeto seleccionado: " + selection.gameObject.name);
+                    Debug.Log("Objeto seleccionado: " + selection.gameObject.name);
+                    World world = selection.gameObject.GetComponent<World>();
+                    worldStatsUI.showCurrentWorldPopulation(world.currentPopulation, world.maxPopulation);
+                
             }
             else
             {
