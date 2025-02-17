@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class World : MonoBehaviour
 {
-    public string name;
+    public string worldName;
     public int maxPopulation;
     public int currentPopulation;
     public int currentStructuresSize;
@@ -21,5 +21,33 @@ public class World : MonoBehaviour
      *  Lab
      */
 
+    public void BuildStructure(string structureType)
+    {
+        if (currentStructuresSize >= maxStructuresSize)
+        {
+            Debug.Log("¡No hay espacio en este planeta para más construcciones!");
+        }
+        else
+        {
+            switch (structureType)
+            {
+                case "city":
+                    cities++;
+                    break;
+                case "factory":
+                    factories++;
+                    break;
+                case "lab":
+                    labs++;
+                    break;
+                default: break;
+            }
+        }
+    }
+
     // Terraforming (increase StructureSize)
+    public void Terraforming()
+    {
+        maxStructuresSize+=5;
+    }
 }

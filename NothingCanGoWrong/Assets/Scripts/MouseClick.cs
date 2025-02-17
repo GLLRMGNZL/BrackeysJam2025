@@ -9,8 +9,6 @@ public class MouseClick : MonoBehaviour
     private Transform selection;
     private RaycastHit raycastHit;
 
-    public WorldStatsUI worldStatsUI;
-
     private void Update()
     {
         CheckSelectionOnClick();
@@ -57,7 +55,7 @@ public class MouseClick : MonoBehaviour
 
                     Debug.Log("Objeto seleccionado: " + selection.gameObject.name);
                     World world = selection.gameObject.GetComponent<World>();
-                    worldStatsUI.ShowWorldStats(world);
+                    WorldStatsUI.instance.ShowWorldStats(world);
                 }
             }
             else

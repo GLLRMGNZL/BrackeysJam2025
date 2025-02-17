@@ -5,6 +5,24 @@ using UnityEngine;
 
 public class WorldStatsUI : MonoBehaviour
 {
+    #region Singleton
+    public static WorldStatsUI instance;
+
+    private void Awake()
+    {
+
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            return;
+        }
+
+    }
+    #endregion
+
     public TextMeshProUGUI worldName;
     public TextMeshProUGUI population;
     public TextMeshProUGUI infrastructure;
@@ -14,7 +32,7 @@ public class WorldStatsUI : MonoBehaviour
 
     public void ShowWorldStats(World world)
     {
-        ShowWorldName(world.name);
+        ShowWorldName(world.worldName);
         ShowCurrentWorldPopulation(world.currentPopulation, world.maxPopulation);
         ShowCurrentWorldInfrastructure(world.currentStructuresSize, world.maxStructuresSize);
         ShowNumberOfCities(world.cities);
