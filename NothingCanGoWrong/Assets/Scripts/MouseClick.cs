@@ -33,13 +33,6 @@ public class MouseClick : MonoBehaviour
                 {
                     highlight.gameObject.GetComponent<Outline>().enabled = true;
                 }
-                else
-                {
-                    Outline outline = highlight.gameObject.AddComponent<Outline>();
-                    outline.enabled = true;
-                    highlight.gameObject.GetComponent<Outline>().OutlineColor = Color.white;
-                    highlight.gameObject.GetComponent<Outline>().OutlineWidth = 7f;
-                }
             }
             else
             {
@@ -52,21 +45,20 @@ public class MouseClick : MonoBehaviour
         {
             if (highlight)
             {
-
                 if (selection != null)
                 {
                     selection.gameObject.GetComponent<Outline>().enabled = false;
                 }
-                    selection = raycastHit.transform;
+                selection = raycastHit.transform;
+                if (selection != null)
+                {
+                    Debug.Log(selection);
                     selection.gameObject.GetComponent<Outline>().enabled = true;
-
-                    highlight.gameObject.GetComponent<Outline>().OutlineColor = Color.blue;
-                    highlight.gameObject.GetComponent<Outline>().OutlineWidth = 20f;
 
                     Debug.Log("Objeto seleccionado: " + selection.gameObject.name);
                     World world = selection.gameObject.GetComponent<World>();
-                    worldStatsUI.showCurrentWorldPopulation(world.currentPopulation, world.maxPopulation);
-                
+                    worldStatsUI.ShowWorldStats(world);
+                }
             }
             else
             {
