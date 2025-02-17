@@ -33,12 +33,15 @@ public class World : MonoBehaviour
             {
                 case "city":
                     cities++;
+                    currentStructuresSize++;
                     break;
                 case "factory":
                     factories++;
+                    currentStructuresSize++;
                     break;
                 case "lab":
                     labs++;
+                    currentStructuresSize++;
                     break;
                 default: break;
             }

@@ -55,6 +55,7 @@ public class MouseClick : MonoBehaviour
 
                     Debug.Log("Objeto seleccionado: " + selection.gameObject.name);
                     World world = selection.gameObject.GetComponent<World>();
+                    Player.instance.selectedWorld = world;
                     WorldStatsUI.instance.ShowWorldStats(world);
                 }
             }
