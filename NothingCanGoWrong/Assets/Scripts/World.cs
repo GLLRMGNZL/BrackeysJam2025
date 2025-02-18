@@ -16,6 +16,7 @@ public class World : MonoBehaviour
     private int populationGrowthRate = 3;
     private float growthInterval = 1f;
     private float buildingResourcesGrowthRate = 7f;
+    private float techLevelGrowthRate = 2f;
 
     private void Start()
     {
@@ -34,6 +35,8 @@ public class World : MonoBehaviour
         InvokeRepeating("IncreasePlayerBuildingResources", 0f, growthInterval);
         CancelInvoke("IncreasePlayerTravelResources");
         InvokeRepeating("IncreasePlayerTravelResources", 0f, growthInterval);
+        CancelInvoke("IncreaseTechLevel");
+        InvokeRepeating("IncreaseTechLevel", 0f, growthInterval);
     }
 
     private void IncreasePopulation()
@@ -69,16 +72,20 @@ public class World : MonoBehaviour
         
     }
 
-    private void IncreaseTechLevel()
-    {
-        // Increase if labs > 0
-    }
-
     private void IncreasePlayerTravelResources()
     {
         float growth = 1;
         growth = factories * buildingResourcesGrowthRate * PlayerStats.instance.technologyLevel;
         PlayerStats.instance.buildingResources += growth;
+    }
+
+    private void IncreaseTechLevel()
+    {
+        // Increase if labs > 0
+        float growth = 1;
+        growth = labs * techLevelGrowthRate;
+        PlayerStats.instance.technologyLevel += (growth / 100);
+        Debug.Log(PlayerStats.instance.technologyLevel);
     }
 
     /* Build and delete structure
