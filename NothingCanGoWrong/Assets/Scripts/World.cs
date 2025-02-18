@@ -15,6 +15,7 @@ public class World : MonoBehaviour
 
     private int populationGrowthRate = 3;
     private float growthInterval = 1f;
+    private float buildingResourcesGrowthRate = 7f;
 
     private void Start()
     {
@@ -23,12 +24,16 @@ public class World : MonoBehaviour
 
     //TODO: Methods
 
-    // Increase population and resources
+    // Increase population, resources and technology
 
     private void GrowthRate()
     {
         CancelInvoke("IncreasePopulation");
         InvokeRepeating("IncreasePopulation", 0f, growthInterval);
+        CancelInvoke("IncreasePlayerBuildingResources");
+        InvokeRepeating("IncreasePlayerBuildingResources", 0f, growthInterval);
+        CancelInvoke("IncreasePlayerTravelResources");
+        InvokeRepeating("IncreasePlayerTravelResources", 0f, growthInterval);
     }
 
     private void IncreasePopulation()
@@ -45,6 +50,35 @@ public class World : MonoBehaviour
 
             currentPopulation += growth;
         }
+    }
+
+    private void IncreasePlayerBuildingResources()
+    {
+        if (PlayerStats.instance.technologyLevel < 1)
+        {
+            float growth = 1;
+            growth = factories * buildingResourcesGrowthRate;
+            PlayerStats.instance.buildingResources += growth;
+        }
+        else
+        {
+            float growth = 1;
+            growth = factories * buildingResourcesGrowthRate * PlayerStats.instance.technologyLevel;
+            PlayerStats.instance.buildingResources += growth;
+        }
+        
+    }
+
+    private void IncreaseTechLevel()
+    {
+        // Increase if labs > 0
+    }
+
+    private void IncreasePlayerTravelResources()
+    {
+        float growth = 1;
+        growth = factories * buildingResourcesGrowthRate * PlayerStats.instance.technologyLevel;
+        PlayerStats.instance.buildingResources += growth;
     }
 
     /* Build and delete structure

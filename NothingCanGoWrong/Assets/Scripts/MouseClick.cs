@@ -9,6 +9,8 @@ public class MouseClick : MonoBehaviour
     private Transform selection;
     private RaycastHit raycastHit;
 
+    public Animator WorldUIAnim;
+
     private void Update()
     {
         CheckSelectionOnClick();
@@ -54,6 +56,7 @@ public class MouseClick : MonoBehaviour
                     selection.gameObject.GetComponent<Outline>().enabled = true;
 
                     Debug.Log("Objeto seleccionado: " + selection.gameObject.name);
+                    WorldUIAnim.SetBool("isOpen", true);
                     World world = selection.gameObject.GetComponent<World>();
                     Player.instance.selectedWorld = world;
                     WorldStatsUI.instance.ShowWorldStats(world);
@@ -63,6 +66,7 @@ public class MouseClick : MonoBehaviour
             {
                 if (selection != null && !EventSystem.current.IsPointerOverGameObject())
                 {
+                    WorldUIAnim.SetBool("isOpen", false);
                     selection.gameObject.GetComponent<Outline>().enabled = false;
                     selection = null;
                 }
