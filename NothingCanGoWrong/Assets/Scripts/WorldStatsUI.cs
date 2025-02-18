@@ -23,12 +23,14 @@ public class WorldStatsUI : MonoBehaviour
     }
     #endregion
 
+    public Animator costPanelAnimator;
     public TextMeshProUGUI worldName;
     public TextMeshProUGUI population;
     public TextMeshProUGUI infrastructure;
     public TextMeshProUGUI cities;
     public TextMeshProUGUI factories;
     public TextMeshProUGUI labs;
+    public TextMeshProUGUI actionCost;
 
     private void Update()
     {
@@ -76,5 +78,34 @@ public class WorldStatsUI : MonoBehaviour
     private void ShowNumberOfLabs(int nLabs)
     {
         labs.text = nLabs.ToString();
+    }
+
+    public void ShowResourcesCost(string action)
+    {
+        costPanelAnimator.SetBool("isOpen", true);
+        switch (action)
+        {
+            case "city":
+                actionCost.text = "1000";
+                Debug.Log("city costs 1000");
+                break;
+            case "factory":
+                actionCost.text = "2000";
+                Debug.Log("factory costs 2000");
+                break;
+            case "lab":
+                actionCost.text = "7000";
+                Debug.Log("lab costs 7000");
+                break;
+            case "terraform":
+                actionCost.text = "10000";
+                Debug.Log("terraform costs 10000");
+                break;
+        }
+    }
+
+    public void HideResourcesCost()
+    {
+        costPanelAnimator.SetBool("isOpen", false);
     }
 }

@@ -34,6 +34,6 @@ public class PlayerStatsUI : MonoBehaviour
         yearText.text = PlayerStats.instance.year.ToString();
         buildingResources.text = PlayerStats.instance.buildingResources.ToString();
         travelResources.text = PlayerStats.instance.travelResources.ToString();
-        techLevel.text = PlayerStats.instance.technologyLevel.ToString();
+        techLevel.text = Mathf.Round(PlayerStats.instance.technologyLevel).ToString();
     }
 }

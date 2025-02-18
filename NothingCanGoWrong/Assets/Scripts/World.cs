@@ -16,14 +16,13 @@ public class World : MonoBehaviour
     private int populationGrowthRate = 3;
     private float growthInterval = 1f;
     private float buildingResourcesGrowthRate = 7f;
+    private float travelResourcesGrowthRate = 4f;
     private float techLevelGrowthRate = 2f;
 
     private void Start()
     {
         GrowthRate();
     }
-
-    //TODO: Methods
 
     // Increase population, resources and technology
 
@@ -43,7 +42,7 @@ public class World : MonoBehaviour
     {
         if (currentPopulation >= maxPopulation)
         {
-            currentPopulation = maxPopulation;
+            currentPopulation = Mathf.RoundToInt(Mathf.Lerp(currentPopulation, maxPopulation, Time.deltaTime)) - 1;
         }
         else
         {
@@ -74,9 +73,16 @@ public class World : MonoBehaviour
 
     private void IncreasePlayerTravelResources()
     {
-        float growth = 1;
-        growth = factories * buildingResourcesGrowthRate * PlayerStats.instance.technologyLevel;
-        PlayerStats.instance.buildingResources += growth;
+        if (PlayerStats.instance.technologyLevel < 1)
+        {
+            return;
+        }
+        else
+        {
+            float growth = 1;
+            growth = factories * travelResourcesGrowthRate * Mathf.Round(PlayerStats.instance.technologyLevel);
+            PlayerStats.instance.travelResources += growth;
+        }
     }
 
     private void IncreaseTechLevel()
@@ -84,8 +90,7 @@ public class World : MonoBehaviour
         // Increase if labs > 0
         float growth = 1;
         growth = labs * techLevelGrowthRate;
-        PlayerStats.instance.technologyLevel += (growth / 100);
-        Debug.Log(PlayerStats.instance.technologyLevel);
+        PlayerStats.instance.technologyLevel += (growth / 500);
     }
 
     /* Build and delete structure
@@ -130,7 +135,7 @@ public class World : MonoBehaviour
                 if (cities > 0)
                 {
                     cities--;
-                    maxPopulation = Mathf.RoundToInt(maxPopulation * -1.15f);
+                    maxPopulation = Mathf.RoundToInt(maxPopulation * 0.8f);
                     currentStructuresSize--;
                 }
                 else
@@ -168,6 +173,10 @@ public class World : MonoBehaviour
     // Terraforming (increase StructureSize)
     public void Terraforming()
     {
-        maxStructuresSize += 3;
+        if (PlayerStats.instance.buildingResources >= 10000)
+        {
+            PlayerStats.instance.buildingResources -= 10000;
+            maxStructuresSize += 3;
+        }
     }
 }
