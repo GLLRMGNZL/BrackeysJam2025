@@ -110,17 +110,41 @@ public class World : MonoBehaviour
             switch (structureType)
             {
                 case "city":
-                    cities++;
-                    maxPopulation = Mathf.RoundToInt(maxPopulation * 1.15f);
-                    currentStructuresSize++;
+                    if (PlayerStats.instance.buildingResources >= 1000)
+                    {
+                        PlayerStats.instance.buildingResources -= 1000;
+                        cities++;
+                        maxPopulation = Mathf.RoundToInt(maxPopulation * 1.15f);
+                        currentStructuresSize++;
+                    }
+                    else
+                    {
+                        Debug.Log("Not enough building resources.");
+                    }
                     break;
                 case "factory":
-                    factories++;
-                    currentStructuresSize++;
+                    if (PlayerStats.instance.buildingResources >= 2000)
+                    {
+                        PlayerStats.instance.buildingResources -= 2000;
+                        factories++;
+                        currentStructuresSize++;
+                    }
+                    else
+                    {
+                        Debug.Log("Not enough building resources.");
+                    }
                     break;
                 case "lab":
-                    labs++;
-                    currentStructuresSize++;
+                    if (PlayerStats.instance.buildingResources >= 7000)
+                    {
+                        PlayerStats.instance.buildingResources -= 7000;
+                        labs++;
+                        currentStructuresSize++;
+                    }
+                    else
+                    {
+                        Debug.Log("Not enough building resources.");
+                    }
                     break;
                 default: break;
             }
@@ -177,6 +201,10 @@ public class World : MonoBehaviour
         {
             PlayerStats.instance.buildingResources -= 10000;
             maxStructuresSize += 3;
+        }
+        else
+        {
+            Debug.Log("Not enough building resources.");
         }
     }
 }

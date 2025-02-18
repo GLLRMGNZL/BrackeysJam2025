@@ -87,19 +87,15 @@ public class WorldStatsUI : MonoBehaviour
         {
             case "city":
                 actionCost.text = "1000";
-                Debug.Log("city costs 1000");
                 break;
             case "factory":
                 actionCost.text = "2000";
-                Debug.Log("factory costs 2000");
                 break;
             case "lab":
                 actionCost.text = "7000";
-                Debug.Log("lab costs 7000");
                 break;
             case "terraform":
                 actionCost.text = "10000";
-                Debug.Log("terraform costs 10000");
                 break;
         }
     }
