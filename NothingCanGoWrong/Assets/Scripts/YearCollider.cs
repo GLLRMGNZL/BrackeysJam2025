@@ -6,6 +6,7 @@ public class YearCollider : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        PlayerStats.year++;
+        PlayerStats.instance.year++;
+        Debug.Log(PlayerStats.instance.year);
     }
 }

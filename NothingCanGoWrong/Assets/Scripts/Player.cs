@@ -29,4 +29,15 @@ public class Player : MonoBehaviour
         selectedWorld.BuildStructure(structureType);
         WorldStatsUI.instance.ShowWorldStats(selectedWorld);
     }
+
+    public void DeleteStructure(string structureType)
+    {
+        selectedWorld.DeleteStructure(structureType);
+        WorldStatsUI.instance.ShowWorldStats(selectedWorld);
+    }
+
+    public void Terraform()
+    {
+        selectedWorld.Terraforming();
+    }
 }

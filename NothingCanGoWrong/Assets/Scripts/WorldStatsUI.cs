@@ -30,6 +30,14 @@ public class WorldStatsUI : MonoBehaviour
     public TextMeshProUGUI factories;
     public TextMeshProUGUI labs;
 
+    private void Update()
+    {
+        if (Player.instance.selectedWorld)
+        {
+            ShowWorldStats(Player.instance.selectedWorld);
+        }
+    }
+
     public void ShowWorldStats(World world)
     {
         ShowWorldName(world.worldName);

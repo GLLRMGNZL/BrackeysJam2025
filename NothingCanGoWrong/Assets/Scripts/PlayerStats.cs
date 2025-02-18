@@ -5,15 +5,28 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    public TextMeshProUGUI yearText;
-    public static int year = 0;
+    #region Singleton
+    public static PlayerStats instance;
 
-    public int technologyLevel;
-    public float buildingResources;
-    public float travelResources;
-
-    private void Update()
+    private void Awake()
     {
-        yearText.text = year.ToString();
+
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            return;
+        }
+
     }
+    #endregion
+
+    public int year = 0;
+
+    public float technologyLevel = 0f;
+    public float buildingResources = 1000f;
+    public float travelResources = 0f;
+
 }
