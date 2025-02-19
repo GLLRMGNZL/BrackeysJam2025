@@ -51,6 +51,7 @@ public class MouseClick : MonoBehaviour
                     selection.gameObject.GetComponent<Outline>().enabled = false;
                     camAnim.SetBool("isOpen", false);
                     WorldUIAnim.SetBool("isOpen", false);
+                    TravelManager.instance.animator.SetBool("isOpen", false);
                 }
                 selection = raycastHit.transform;
                 if (selection != null)
