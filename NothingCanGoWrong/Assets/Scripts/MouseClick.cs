@@ -42,13 +42,15 @@ public class MouseClick : MonoBehaviour
         }
 
         // Mouse Selection
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             if (highlight)
             {
                 if (selection != null)
                 {
                     selection.gameObject.GetComponent<Outline>().enabled = false;
+                    camAnim.SetBool("isOpen", false);
+                    WorldUIAnim.SetBool("isOpen", false);
                 }
                 selection = raycastHit.transform;
                 if (selection != null)

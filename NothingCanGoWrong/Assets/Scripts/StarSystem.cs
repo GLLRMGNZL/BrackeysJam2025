@@ -5,13 +5,31 @@ using UnityEngine;
 
 public class StarSystem : MonoBehaviour
 {
+    #region Singleton
+    public static StarSystem instance;
+
+    private void Awake()
+    {
+
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            return;
+        }
+
+    }
+    #endregion
+
     private float G = 100f;
-    private GameObject[] attractors;
+    public List<GameObject> attractors;
 
     // Start is called before the first frame update
     void Start()
     {
-        attractors = FindObjectsOfType<Attractor>().Select(a => a.gameObject).ToArray();
+        attractors = FindObjectsOfType<Attractor>().Select(a => a.gameObject).ToList();
         InitialVelocity();
     }
 

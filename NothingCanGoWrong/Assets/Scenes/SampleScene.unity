@@ -427,7 +427,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 316.6, y: -189.4}
+  m_AnchoredPosition: {x: 316.6, y: -189.39998}
   m_SizeDelta: {x: -706.07434, y: -419.7084}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &125610455
@@ -2009,6 +2009,8 @@ MonoBehaviour:
   labs: 0
   isSettled: 0
   activeProgressBars: []
+  worldUIAnim: {fileID: 608686161}
+  camAnim: {fileID: 963194230}
   planetRenderer: {fileID: 602765399}
   mat1: {fileID: 2100000, guid: 09f4f95bd7f21d54a86c9361ea4db2e0, type: 2}
   mat2: {fileID: 2100000, guid: 861bbb2a71742aa4bb76dc57d20e51b7, type: 2}
@@ -2775,7 +2777,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -275.7, y: 206}
+  m_AnchoredPosition: {x: -275.69998, y: 206}
   m_SizeDelta: {x: -551.3947, y: -411.9924}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &690349007
@@ -4930,12 +4932,14 @@ MonoBehaviour:
   labs: 0
   isSettled: 0
   activeProgressBars: []
+  worldUIAnim: {fileID: 608686161}
+  camAnim: {fileID: 963194230}
   planetRenderer: {fileID: 1123370374}
   mat1: {fileID: 2100000, guid: d3b44a0fe41511d458e2bdb3ec7f55fa, type: 2}
   mat2: {fileID: 2100000, guid: 861bbb2a71742aa4bb76dc57d20e51b7, type: 2}
   steps: 15
-  baseStepDuration: 10000
-  stepDuration: 10000
+  baseStepDuration: 10
+  stepDuration: 10
 --- !u!114 &1123370379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5746,6 +5750,8 @@ MonoBehaviour:
   labs: 0
   isSettled: 0
   activeProgressBars: []
+  worldUIAnim: {fileID: 608686161}
+  camAnim: {fileID: 963194230}
   planetRenderer: {fileID: 1322506378}
   mat1: {fileID: 2100000, guid: 166b3ea324b4df246acef5f50ad1e569, type: 2}
   mat2: {fileID: 2100000, guid: 861bbb2a71742aa4bb76dc57d20e51b7, type: 2}
@@ -6202,8 +6208,8 @@ Canvas:
   m_GameObject: {fileID: 1349739218}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 963194227}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -7027,6 +7033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52906d5061c71d442a6ef9ba28698116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attractors: []
 --- !u!1 &1720673728
 GameObject:
   m_ObjectHideFlags: 0

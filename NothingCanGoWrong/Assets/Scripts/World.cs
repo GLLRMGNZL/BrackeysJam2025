@@ -17,6 +17,9 @@ public class World : MonoBehaviour
     public bool isSettled;
     public List<GameObject> activeProgressBars = new List<GameObject>();
 
+    public Animator worldUIAnim;
+    public Animator camAnim;
+
     private int populationGrowthRate = 3;
     private float growthInterval = 1f;
     private float buildingResourcesGrowthRate = 7f;
@@ -33,10 +36,11 @@ public class World : MonoBehaviour
     public float baseStepDuration = 10000f;
     public float stepDuration = 10000f;
 
-    private float minStepDuration = 2f;
+    private float minStepDuration = 5f;
     private Material transitionMaterial;
     private int currentStep = 0;
     private bool isTransitioning = false;
+    private bool isTransitionComplete = false;
     
 
     private void Start()
@@ -66,6 +70,17 @@ public class World : MonoBehaviour
         if (!isTransitioning)
         {
             StartTransition();
+        }
+
+        if (isTransitionComplete)
+        {
+            if (Player.instance.selectedWorld == this)
+            {
+                Player.instance.selectedWorld = null;
+                worldUIAnim.SetBool("isOpen", false);
+                camAnim.SetBool("isOpen", false);
+            }
+            this.gameObject.SetActive(false);
         }
     }
 
@@ -333,5 +348,6 @@ public class World : MonoBehaviour
         }
 
         isTransitioning = false;
+        isTransitionComplete = true;
     }
 }
