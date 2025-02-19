@@ -25,6 +25,7 @@ public class StarSystem : MonoBehaviour
 
     private float G = 100f;
     public List<GameObject> attractors;
+    public int planetsDestroyed = 0;
 
     // Start is called before the first frame update
     void Start()

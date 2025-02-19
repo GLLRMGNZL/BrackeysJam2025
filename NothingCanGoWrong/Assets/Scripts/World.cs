@@ -19,6 +19,7 @@ public class World : MonoBehaviour
 
     public Animator worldUIAnim;
     public Animator camAnim;
+    public GameObject explosionPrefab;
 
     private int populationGrowthRate = 3;
     private float growthInterval = 1f;
@@ -41,7 +42,8 @@ public class World : MonoBehaviour
     private int currentStep = 0;
     private bool isTransitioning = false;
     private bool isTransitionComplete = false;
-    
+    private bool hasExploded = false;
+
 
     private void Start()
     {
@@ -74,13 +76,17 @@ public class World : MonoBehaviour
 
         if (isTransitionComplete)
         {
+            Vector3 worldPosition = this.gameObject.transform.position;
+
             if (Player.instance.selectedWorld == this)
             {
                 Player.instance.selectedWorld = null;
                 worldUIAnim.SetBool("isOpen", false);
                 camAnim.SetBool("isOpen", false);
             }
-            this.gameObject.SetActive(false);
+            // Instantiate explosion prefab and set World inactive
+            if (!hasExploded)
+                StartCoroutine(PlanetExplosion(worldPosition));
         }
     }
 
@@ -349,5 +355,14 @@ public class World : MonoBehaviour
 
         isTransitioning = false;
         isTransitionComplete = true;
+    }
+
+    private IEnumerator PlanetExplosion(Vector3 worldPosition)
+    {
+        Instantiate(explosionPrefab, worldPosition, Quaternion.identity);
+        hasExploded = true;
+        yield return new WaitForSeconds(0.2f);
+        this.gameObject.SetActive(false);
+        StarSystem.instance.planetsDestroyed++;
     }
 }
