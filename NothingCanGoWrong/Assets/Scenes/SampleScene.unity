@@ -2008,6 +2008,7 @@ MonoBehaviour:
   factories: 0
   labs: 0
   isSettled: 0
+  activeProgressBars: []
 --- !u!96 &602765395
 TrailRenderer:
   serializedVersion: 3
@@ -2193,7 +2194,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 09f4f95bd7f21d54a86c9361ea4db2e0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2374,7 +2375,6 @@ MonoBehaviour:
   actionCost: {fileID: 259798510}
   progressBarPrefab: {fileID: 2854838626147084117, guid: cbc0a8391c224774d9341225a1216b14, type: 3}
   progressBarContainer: {fileID: 649121045}
-  activeProgressBars: []
 --- !u!95 &608686161
 Animator:
   serializedVersion: 5
@@ -2842,7 +2842,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &705507994
 Light:
   m_ObjectHideFlags: 0
@@ -3426,7 +3426,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 106.3
+  field of view: 105
   orthographic: 0
   orthographic size: 750
   m_Depth: -1
@@ -4669,7 +4669,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d3b44a0fe41511d458e2bdb3ec7f55fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4839,6 +4839,7 @@ MonoBehaviour:
   factories: 0
   labs: 0
   isSettled: 0
+  activeProgressBars: []
 --- !u!114 &1123370379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5648,6 +5649,7 @@ MonoBehaviour:
   factories: 0
   labs: 0
   isSettled: 0
+  activeProgressBars: []
 --- !u!96 &1322506374
 TrailRenderer:
   serializedVersion: 3
@@ -5833,7 +5835,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 166b3ea324b4df246acef5f50ad1e569, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6465,7 +6467,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e5cceda256319a4468d3095bba300f51, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6561,9 +6563,9 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0, g: 1, b: 0.6073649, a: 1}
-  m_Intensity: 1
-  m_Range: 1084.1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 3.23
+  m_Range: 1086.92
   m_SpotAngle: 179
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
