@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class World : MonoBehaviour
 {
@@ -18,6 +20,7 @@ public class World : MonoBehaviour
     private float buildingResourcesGrowthRate = 7f;
     private float travelResourcesGrowthRate = 4f;
     private float techLevelGrowthRate = 2f;
+    private int maxSimultaneousConstructions => Mathf.RoundToInt(Mathf.Min(PlayerStats.instance.technologyLevel + 1f, 4f));
 
     private void Start()
     {
@@ -101,6 +104,12 @@ public class World : MonoBehaviour
 
     public void BuildStructure(string structureType)
     {
+        if (WorldStatsUI.instance.activeProgressBars.Count >= maxSimultaneousConstructions)
+        {
+            Debug.Log("Límite de construcciones simultáneas alcanzado.");
+            return;
+        }
+
         if (currentStructuresSize >= maxStructuresSize)
         {
             Debug.Log("¡No hay espacio en este planeta para más construcciones!");
@@ -157,22 +166,22 @@ public class World : MonoBehaviour
 
         Debug.Log($"Construcción de {structureType} en proceso... Tiempo estimado: {constructionTime:F1} segundos.");
 
-        WorldStatsUI.instance.constructionText.gameObject.SetActive(true);
-        WorldStatsUI.instance.constructionText.text = structureType;
-        WorldStatsUI.instance.constructionProgressBar.gameObject.SetActive(true);
-        WorldStatsUI.instance.constructionProgressBar.value = 0;
+        GameObject progressBar = Instantiate(WorldStatsUI.instance.progressBarPrefab, WorldStatsUI.instance.progressBarContainer);
+        Slider slider = progressBar.GetComponent<Slider>();
+        slider.value = 0;
+        WorldStatsUI.instance.activeProgressBars.Add(progressBar);
 
         float elapsedTime = 0;
 
         while (elapsedTime < constructionTime)
         {
             elapsedTime += Time.deltaTime;
-            WorldStatsUI.instance.constructionProgressBar.value = elapsedTime / constructionTime;
+            slider.value = elapsedTime / constructionTime;
             yield return null;
         }
 
-        WorldStatsUI.instance.constructionText.gameObject.SetActive(false);
-        WorldStatsUI.instance.constructionProgressBar.gameObject.SetActive(false);
+        WorldStatsUI.instance.activeProgressBars.Remove(progressBar);
+        Destroy(progressBar);
 
         switch (structureType)
         {
