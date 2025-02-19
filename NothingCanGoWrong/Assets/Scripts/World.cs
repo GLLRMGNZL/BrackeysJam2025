@@ -24,6 +24,17 @@ public class World : MonoBehaviour
     private float techLevelGrowthRate = 2f;
     private int maxSimultaneousConstructions => Mathf.RoundToInt(Mathf.Min(PlayerStats.instance.technologyLevel + 1f, 4f));
 
+    // Material Slope
+    public Renderer planetRenderer;
+    public Material mat1;
+    public Material mat2;
+    public int steps = 15;
+    public float stepDuration = 0.5f;
+
+    private Material transitionMaterial;
+    private int currentStep = 0;
+    
+
     private void Start()
     {
         if (this.worldName == "Earth")
@@ -36,10 +47,14 @@ public class World : MonoBehaviour
         }
 
         GrowthRate();
+
+        // Material Slope
+        transitionMaterial = new Material(mat1);
+        planetRenderer.material = transitionMaterial;
+        StartTransition();
     }
 
     // Increase population, resources and technology
-
     private void GrowthRate()
     {
         CancelInvoke("IncreasePopulation");
@@ -271,5 +286,32 @@ public class World : MonoBehaviour
         {
             Debug.Log("Not enough building resources.");
         }
+    }
+
+    // Material Slope
+
+    public void StartTransition()
+    {
+        StopCoroutine(TransitionCoroutine());
+        StartCoroutine(TransitionCoroutine());
+    }
+
+    private IEnumerator TransitionCoroutine()
+    {
+        for (currentStep = 1; currentStep < steps; currentStep++)
+        {
+            float t = (float)currentStep / steps;
+
+            // Transition between material colors
+            transitionMaterial.color = Color.Lerp(mat1.color, mat2.color, t);
+
+            // Transition between textures
+            if (mat1.mainTexture != null && mat2.mainTexture != null)
+            {
+                transitionMaterial.mainTexture = (t < 0.5f) ? mat1.mainTexture : mat2.mainTexture;
+            }
+            yield return new WaitForSeconds(stepDuration);
+        }
+        
     }
 }
