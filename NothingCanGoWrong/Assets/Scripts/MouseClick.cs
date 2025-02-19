@@ -65,6 +65,8 @@ public class MouseClick : MonoBehaviour
                     Debug.Log("Objeto seleccionado: " + selection.gameObject.name);
                     World world = selection.gameObject.GetComponent<World>();
                     Player.instance.selectedWorld = world;
+                    Player.instance.selectedWorld.isSelected = true;
+                    UpdateConstructionSliders();
 
                     if (!world.isSettled)
                     {
@@ -89,6 +91,15 @@ public class MouseClick : MonoBehaviour
                     selection = null;
                 }
             }
+        }
+    }
+
+    private void UpdateConstructionSliders()
+    {
+        foreach (World w in FindObjectsOfType<World>())
+        {
+            bool isActive = (w == Player.instance.selectedWorld);
+            w.SetSlidersVisibility(isActive);
         }
     }
 }

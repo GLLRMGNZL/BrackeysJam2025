@@ -14,6 +14,7 @@ public class World : MonoBehaviour
     public int cities;
     public int factories;
     public int labs;
+    public bool isSelected = false;
     public bool isSettled;
     public List<GameObject> activeProgressBars = new List<GameObject>();
 
@@ -236,6 +237,8 @@ public class World : MonoBehaviour
         slider.value = 0;
         activeProgressBars.Add(progressBar);
 
+        progressBar.SetActive(isSelected);
+
         float elapsedTime = 0;
 
         while (elapsedTime < constructionTime)
@@ -321,6 +324,18 @@ public class World : MonoBehaviour
         else
         {
             Debug.Log("Not enough building resources.");
+        }
+    }
+
+    // Sliders visibility
+
+    public void SetSlidersVisibility (bool isVisible)
+    {
+        isSelected = isVisible;
+
+        foreach (GameObject progressBar in activeProgressBars)
+        {
+            progressBar.SetActive(isVisible);
         }
     }
 
