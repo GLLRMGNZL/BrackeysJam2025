@@ -25,14 +25,18 @@ public class World : MonoBehaviour
     private int maxSimultaneousConstructions => Mathf.RoundToInt(Mathf.Min(PlayerStats.instance.technologyLevel + 1f, 4f));
 
     // Material Slope
+    [Header("Material Slope")]
     public Renderer planetRenderer;
     public Material mat1;
     public Material mat2;
     public int steps = 15;
-    public float stepDuration = 0.5f;
+    public float baseStepDuration = 10000f;
+    public float stepDuration = 10000f;
 
+    private float minStepDuration = 2f;
     private Material transitionMaterial;
     private int currentStep = 0;
+    private bool isTransitioning = false;
     
 
     private void Start()
@@ -52,6 +56,17 @@ public class World : MonoBehaviour
         transitionMaterial = new Material(mat1);
         planetRenderer.material = transitionMaterial;
         StartTransition();
+    }
+
+    private void Update()
+    {
+        // Material Slope: Depending on CurrentPopulation and currentStructuresSize, stepDuration diminishes
+        stepDuration = Mathf.Max(minStepDuration, baseStepDuration - (currentPopulation * currentStructuresSize) * 0.005f);
+
+        if (!isTransitioning)
+        {
+            StartTransition();
+        }
     }
 
     // Increase population, resources and technology
@@ -292,8 +307,12 @@ public class World : MonoBehaviour
 
     public void StartTransition()
     {
-        StopCoroutine(TransitionCoroutine());
-        StartCoroutine(TransitionCoroutine());
+        if (!isTransitioning)
+        {
+            isTransitioning = true;
+            //StopCoroutine(TransitionCoroutine());
+            StartCoroutine(TransitionCoroutine());
+        }
     }
 
     private IEnumerator TransitionCoroutine()
@@ -312,6 +331,7 @@ public class World : MonoBehaviour
             }
             yield return new WaitForSeconds(stepDuration);
         }
-        
+
+        isTransitioning = false;
     }
 }

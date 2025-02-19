@@ -10,6 +10,7 @@ public class MouseClick : MonoBehaviour
     private RaycastHit raycastHit;
 
     public Animator WorldUIAnim;
+    public Animator camAnim;
 
     private void Update()
     {
@@ -56,6 +57,7 @@ public class MouseClick : MonoBehaviour
                     selection.gameObject.GetComponent<Outline>().enabled = true;
 
                     TravelManager.instance.animator.SetBool("isOpen", false);
+                    camAnim.SetBool("isOpen", false);
 
                     Debug.Log("Objeto seleccionado: " + selection.gameObject.name);
                     World world = selection.gameObject.GetComponent<World>();
@@ -65,11 +67,12 @@ public class MouseClick : MonoBehaviour
                     {
                         TravelManager.instance.animator.SetBool("isOpen", true);
                         TravelManager.instance.PlanetName.text = world.worldName;
+                        camAnim.SetBool("isOpen", true);
                     }
 
                     WorldUIAnim.SetBool("isOpen", true);
                     WorldStatsUI.instance.ShowWorldStats(world);
-                    
+                    camAnim.SetBool("isOpen", true);
                 }
             }
             else
@@ -78,6 +81,7 @@ public class MouseClick : MonoBehaviour
                 {
                     WorldUIAnim.SetBool("isOpen", false);
                     TravelManager.instance.animator.SetBool("isOpen", false);
+                    camAnim.SetBool("isOpen", false);
                     selection.gameObject.GetComponent<Outline>().enabled = false;
                     selection = null;
                 }
