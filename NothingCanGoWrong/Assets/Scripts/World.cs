@@ -68,7 +68,7 @@ public class World : MonoBehaviour
             growth = factories * buildingResourcesGrowthRate * PlayerStats.instance.technologyLevel;
             PlayerStats.instance.buildingResources += growth;
         }
-        
+
     }
 
     private void IncreasePlayerTravelResources()
@@ -110,44 +110,89 @@ public class World : MonoBehaviour
             switch (structureType)
             {
                 case "city":
-                    if (PlayerStats.instance.buildingResources >= 1000)
-                    {
-                        PlayerStats.instance.buildingResources -= 1000;
-                        cities++;
-                        maxPopulation = Mathf.RoundToInt(maxPopulation * 1.15f);
-                        currentStructuresSize++;
-                    }
-                    else
+                    if (PlayerStats.instance.buildingResources < 1000)
                     {
                         Debug.Log("Not enough building resources.");
+                        return;
                     }
                     break;
                 case "factory":
-                    if (PlayerStats.instance.buildingResources >= 2000)
-                    {
-                        PlayerStats.instance.buildingResources -= 2000;
-                        factories++;
-                        currentStructuresSize++;
-                    }
-                    else
+                    if (PlayerStats.instance.buildingResources < 2000)
                     {
                         Debug.Log("Not enough building resources.");
+                        return;
                     }
                     break;
                 case "lab":
-                    if (PlayerStats.instance.buildingResources >= 7000)
-                    {
-                        PlayerStats.instance.buildingResources -= 7000;
-                        labs++;
-                        currentStructuresSize++;
-                    }
-                    else
+                    if (PlayerStats.instance.buildingResources < 7000)
                     {
                         Debug.Log("Not enough building resources.");
+                        return;
                     }
                     break;
                 default: break;
             }
+            StartCoroutine(BuildStructureCoroutine(structureType));
+        }
+    }
+
+    private IEnumerator BuildStructureCoroutine(string structureType)
+    {
+        switch (structureType)
+        {
+            case "city":
+                PlayerStats.instance.buildingResources -= 1000;
+                break;
+            case "factory":
+                PlayerStats.instance.buildingResources -= 2000;
+                break;
+            case "lab":
+                PlayerStats.instance.buildingResources -= 7000;
+                break;
+        }
+
+        float baseTime = 10f;
+        float minTime = 2f;
+        float constructionTime = Mathf.Clamp(baseTime * Mathf.Pow(0.5f, currentPopulation / 30000f), minTime, baseTime);
+
+        Debug.Log($"Construcción de {structureType} en proceso... Tiempo estimado: {constructionTime:F1} segundos.");
+
+        WorldStatsUI.instance.constructionText.gameObject.SetActive(true);
+        WorldStatsUI.instance.constructionText.text = structureType;
+        WorldStatsUI.instance.constructionProgressBar.gameObject.SetActive(true);
+        WorldStatsUI.instance.constructionProgressBar.value = 0;
+
+        float elapsedTime = 0;
+
+        while (elapsedTime < constructionTime)
+        {
+            elapsedTime += Time.deltaTime;
+            WorldStatsUI.instance.constructionProgressBar.value = elapsedTime / constructionTime;
+            yield return null;
+        }
+
+        WorldStatsUI.instance.constructionText.gameObject.SetActive(false);
+        WorldStatsUI.instance.constructionProgressBar.gameObject.SetActive(false);
+
+        switch (structureType)
+        {
+            case "city":
+                cities++;
+                maxPopulation = Mathf.RoundToInt(maxPopulation * 1.15f);
+                currentStructuresSize++;
+                break;
+
+            case "factory":
+                factories++;
+                currentStructuresSize++;
+                break;
+
+            case "lab":
+                labs++;
+                currentStructuresSize++;
+                break;
+
+            default: break;
         }
     }
 
