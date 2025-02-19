@@ -20,6 +20,7 @@ public class MouseClick : MonoBehaviour
     {
         if (highlight != null && highlight != selection)
         {
+            TravelManager.instance.animator.SetBool("isOpen", false);
             highlight.gameObject.GetComponent<Outline>().enabled = false;
         }
 
@@ -56,10 +57,18 @@ public class MouseClick : MonoBehaviour
                     selection.gameObject.GetComponent<Outline>().enabled = true;
 
                     Debug.Log("Objeto seleccionado: " + selection.gameObject.name);
-                    WorldUIAnim.SetBool("isOpen", true);
                     World world = selection.gameObject.GetComponent<World>();
                     Player.instance.selectedWorld = world;
+
+                    if (!world.isSettled)
+                    {
+                        TravelManager.instance.animator.SetBool("isOpen", true);
+                        TravelManager.instance.PlanetName.text = world.worldName;
+                    }
+
+                    WorldUIAnim.SetBool("isOpen", true);
                     WorldStatsUI.instance.ShowWorldStats(world);
+                    
                 }
             }
             else
@@ -67,6 +76,7 @@ public class MouseClick : MonoBehaviour
                 if (selection != null && !EventSystem.current.IsPointerOverGameObject())
                 {
                     WorldUIAnim.SetBool("isOpen", false);
+                    TravelManager.instance.animator.SetBool("isOpen", false);
                     selection.gameObject.GetComponent<Outline>().enabled = false;
                     selection = null;
                 }

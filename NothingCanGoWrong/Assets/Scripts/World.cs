@@ -14,6 +14,8 @@ public class World : MonoBehaviour
     public int cities;
     public int factories;
     public int labs;
+    public bool isSettled;
+    public List<GameObject> activeProgressBars = new List<GameObject>();
 
     private int populationGrowthRate = 3;
     private float growthInterval = 1f;
@@ -24,6 +26,15 @@ public class World : MonoBehaviour
 
     private void Start()
     {
+        if (this.worldName == "Earth")
+        {
+            isSettled = true;
+        }
+        else
+        {
+            isSettled = false;
+        }
+
         GrowthRate();
     }
 
@@ -104,7 +115,7 @@ public class World : MonoBehaviour
 
     public void BuildStructure(string structureType)
     {
-        if (WorldStatsUI.instance.activeProgressBars.Count >= maxSimultaneousConstructions)
+        if (activeProgressBars.Count >= maxSimultaneousConstructions)
         {
             Debug.Log("Límite de construcciones simultáneas alcanzado.");
             return;
@@ -151,12 +162,15 @@ public class World : MonoBehaviour
         {
             case "city":
                 PlayerStats.instance.buildingResources -= 1000;
+                currentStructuresSize++;
                 break;
             case "factory":
                 PlayerStats.instance.buildingResources -= 2000;
+                currentStructuresSize++;
                 break;
             case "lab":
                 PlayerStats.instance.buildingResources -= 7000;
+                currentStructuresSize++;
                 break;
         }
 
@@ -169,7 +183,7 @@ public class World : MonoBehaviour
         GameObject progressBar = Instantiate(WorldStatsUI.instance.progressBarPrefab, WorldStatsUI.instance.progressBarContainer);
         Slider slider = progressBar.GetComponent<Slider>();
         slider.value = 0;
-        WorldStatsUI.instance.activeProgressBars.Add(progressBar);
+        activeProgressBars.Add(progressBar);
 
         float elapsedTime = 0;
 
@@ -180,7 +194,7 @@ public class World : MonoBehaviour
             yield return null;
         }
 
-        WorldStatsUI.instance.activeProgressBars.Remove(progressBar);
+        activeProgressBars.Remove(progressBar);
         Destroy(progressBar);
 
         switch (structureType)
@@ -188,17 +202,14 @@ public class World : MonoBehaviour
             case "city":
                 cities++;
                 maxPopulation = Mathf.RoundToInt(maxPopulation * 1.15f);
-                currentStructuresSize++;
                 break;
 
             case "factory":
                 factories++;
-                currentStructuresSize++;
                 break;
 
             case "lab":
                 labs++;
-                currentStructuresSize++;
                 break;
 
             default: break;

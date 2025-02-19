@@ -34,7 +34,6 @@ public class WorldStatsUI : MonoBehaviour
     public TextMeshProUGUI actionCost;
     public GameObject progressBarPrefab;
     public Transform progressBarContainer;
-    public List<GameObject> activeProgressBars = new List<GameObject>();
 
     private void Update()
     {
