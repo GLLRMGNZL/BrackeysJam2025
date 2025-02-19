@@ -20,7 +20,6 @@ public class MouseClick : MonoBehaviour
     {
         if (highlight != null && highlight != selection)
         {
-            TravelManager.instance.animator.SetBool("isOpen", false);
             highlight.gameObject.GetComponent<Outline>().enabled = false;
         }
 
@@ -55,6 +54,8 @@ public class MouseClick : MonoBehaviour
                 {
                     Debug.Log(selection);
                     selection.gameObject.GetComponent<Outline>().enabled = true;
+
+                    TravelManager.instance.animator.SetBool("isOpen", false);
 
                     Debug.Log("Objeto seleccionado: " + selection.gameObject.name);
                     World world = selection.gameObject.GetComponent<World>();
