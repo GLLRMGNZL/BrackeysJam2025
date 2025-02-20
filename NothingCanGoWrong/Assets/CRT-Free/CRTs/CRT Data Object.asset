@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f312d9f3f24cdb944c1453a1accefb, type: 3}
+  m_Name: CRT Data Object
+  m_EditorClassIdentifier: 
+  data:
+    pixelationAmount: 1
+    maxColorChannels:
+      red: 0
+      green: 34
+      blue: 12
+      greyScale: 0
+    dithering4: 0.008
+    dithering8: 0.008
+    vignette: 0
+    innerCurve: 5.4
+    monitorCurve: 0
+    monitorInnerSize:
+      width: 0
+      height: 0
+    monitorOutterSize:
+      width: 0.5
+      height: 0.5
+    zoom: 1.22
+    monitorRoundness: 0.2
+    monitorTexture: {fileID: 0}
+    monitorColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    innerMonitorDarkness: 1
+    innerMonitorShine: 0
+    colorScans:
+      greenChannelMultiplier: 0.5
+      redBlueChannelMultiplier: 0.159
+      sizeMultiplier: 7.83
+    innerMonitorShineRadius: -0.087
+    innerMonitorShineCurve: 10
+  validationId: 81259a15-8b1b-483f-96a6-d2b51b79f227

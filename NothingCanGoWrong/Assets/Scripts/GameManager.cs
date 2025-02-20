@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     public Animator transition;
+    public Animator lightTransition;
 
     // Update is called once per frame
     void Update()
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
     public void NewGame()
     {
         Debug.Log("NewGame called");
+        StartCoroutine(LightTransition());
         StartCoroutine(LoadLevel(1));
     }
 
@@ -55,6 +57,12 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         SceneManager.LoadScene(level);
+    }
+
+    IEnumerator LightTransition()
+    {
+        lightTransition.SetTrigger("End");
+        yield return new WaitForSeconds(1f);
     }
 
     public void QuitGame()

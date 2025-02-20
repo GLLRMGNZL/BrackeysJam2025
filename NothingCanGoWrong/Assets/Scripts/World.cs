@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -233,6 +234,8 @@ public class World : MonoBehaviour
         Debug.Log($"Construcción de {structureType} en proceso... Tiempo estimado: {constructionTime:F1} segundos.");
 
         GameObject progressBar = Instantiate(WorldStatsUI.instance.progressBarPrefab, WorldStatsUI.instance.progressBarContainer);
+        TextMeshProUGUI constructionText = progressBar.GetComponentInChildren<TextMeshProUGUI>();
+        constructionText.text = structureType;
         Slider slider = progressBar.GetComponent<Slider>();
         slider.value = 0;
         activeProgressBars.Add(progressBar);
