@@ -169,12 +169,14 @@ public class World : MonoBehaviour
     {
         if (activeProgressBars.Count >= maxSimultaneousConstructions)
         {
+            WarningManager.instance.Warning("construction");
             Debug.Log("Límite de construcciones simultáneas alcanzado.");
             return;
         }
 
         if (currentStructuresSize >= maxStructuresSize)
         {
+            WarningManager.instance.Warning("space");
             Debug.Log("¡No hay espacio en este planeta para más construcciones!");
         }
         else
@@ -184,6 +186,7 @@ public class World : MonoBehaviour
                 case "city":
                     if (PlayerStats.instance.buildingResources < 1000)
                     {
+                        WarningManager.instance.Warning("resources");
                         Debug.Log("Not enough building resources.");
                         return;
                     }
@@ -191,6 +194,7 @@ public class World : MonoBehaviour
                 case "factory":
                     if (PlayerStats.instance.buildingResources < 2000)
                     {
+                        WarningManager.instance.Warning("resources");
                         Debug.Log("Not enough building resources.");
                         return;
                     }
@@ -198,6 +202,7 @@ public class World : MonoBehaviour
                 case "lab":
                     if (PlayerStats.instance.buildingResources < 7000)
                     {
+                        WarningManager.instance.Warning("resources");
                         Debug.Log("Not enough building resources.");
                         return;
                     }
