@@ -22,12 +22,12 @@ public class World : MonoBehaviour
     public Animator camAnim;
     public GameObject explosionPrefab;
 
-    private int populationGrowthRate = 3;
+    private int populationGrowthRate = 5;
     private float growthInterval = 1f;
     private float buildingResourcesGrowthRate = 7f;
     private float travelResourcesGrowthRate = 4f;
     private float techLevelGrowthRate = 2f;
-    private int maxSimultaneousConstructions => Mathf.RoundToInt(Mathf.Min(PlayerStats.instance.technologyLevel + 1f, 4f));
+    private int maxSimultaneousConstructions => Mathf.RoundToInt(Mathf.Min(PlayerStats.instance.technologyLevel + 2f, 6f));
 
     // Material Slope
     [Header("Material Slope")]
@@ -48,7 +48,7 @@ public class World : MonoBehaviour
 
     private void Start()
     {
-        if (this.worldName == "Earth")
+        if (this.worldName == "Nereo")
         {
             isSettled = true;
         }
@@ -113,6 +113,8 @@ public class World : MonoBehaviour
         else
         {
             int growth = 1;
+
+            populationGrowthRate += (cities / 3);
 
             growth = cities * populationGrowthRate;
 
@@ -187,7 +189,7 @@ public class World : MonoBehaviour
                     if (PlayerStats.instance.buildingResources < 1000)
                     {
                         WarningManager.instance.Warning("resources");
-                        Debug.Log("Not enough building resources.");
+                        Debug.Log(PlayerStats.instance.buildingResources);
                         return;
                     }
                     break;
@@ -195,7 +197,7 @@ public class World : MonoBehaviour
                     if (PlayerStats.instance.buildingResources < 2000)
                     {
                         WarningManager.instance.Warning("resources");
-                        Debug.Log("Not enough building resources.");
+                        Debug.Log(PlayerStats.instance.buildingResources);
                         return;
                     }
                     break;
@@ -203,7 +205,7 @@ public class World : MonoBehaviour
                     if (PlayerStats.instance.buildingResources < 7000)
                     {
                         WarningManager.instance.Warning("resources");
-                        Debug.Log("Not enough building resources.");
+                        Debug.Log(PlayerStats.instance.buildingResources);
                         return;
                     }
                     break;
@@ -218,13 +220,17 @@ public class World : MonoBehaviour
         float structureMultiplier = 1f;
         float worldMultiplier = 1f;
 
-        if (this.worldName == "Melancholia")
+        if (this.worldName == "Harmonia")
         {
             worldMultiplier = 1.5f;
         }
-        else if (this.worldName == "Paranoia")
+        else if (this.worldName == "Dice")
         {
             worldMultiplier = 1.3f;
+        }
+        else if (this.worldName == "Asclepio")
+        {
+            worldMultiplier = 2f;
         }
 
         switch (structureType)
@@ -247,7 +253,7 @@ public class World : MonoBehaviour
 
         float baseTime = 10f;
         float minTime = 2f;
-        float constructionTime = Mathf.Clamp(baseTime * Mathf.Pow(0.5f, currentPopulation / 30000f), minTime, baseTime) * structureMultiplier * worldMultiplier;
+        float constructionTime = (Mathf.Clamp(baseTime * Mathf.Pow(0.5f, currentPopulation / 3000f), minTime, baseTime) * structureMultiplier * worldMultiplier) + 10f;
 
         Debug.Log($"Construcción de {structureType} en proceso... Tiempo estimado: {constructionTime:F1} segundos.");
 
