@@ -70,7 +70,7 @@ public class World : MonoBehaviour
         // Material Slope: Depending on CurrentPopulation and currentStructuresSize, stepDuration diminishes
         stepDuration = Mathf.Max(minStepDuration, baseStepDuration - (currentPopulation * currentStructuresSize) * 0.005f);
 
-        if (!isTransitioning)
+        if (!isTransitioning && !isTransitionComplete)
         {
             StartTransition();
         }
