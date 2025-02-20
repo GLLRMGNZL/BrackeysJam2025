@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -140,14 +139,14 @@ public class World : MonoBehaviour
 
     private void IncreasePlayerTravelResources()
     {
-        if (PlayerStats.instance.technologyLevel < 1)
+        if (PlayerStats.instance.technologyLevel < 1 || factories == 0 || labs == 0)
         {
             return;
         }
         else
         {
             float growth = 1;
-            growth = factories * travelResourcesGrowthRate * Mathf.Round(PlayerStats.instance.technologyLevel);
+            growth = labs * ((float)factories / 2) * travelResourcesGrowthRate * Mathf.Round(PlayerStats.instance.technologyLevel);
             PlayerStats.instance.travelResources += growth;
         }
     }
@@ -211,6 +210,18 @@ public class World : MonoBehaviour
 
     private IEnumerator BuildStructureCoroutine(string structureType)
     {
+        float structureMultiplier = 1f;
+        float worldMultiplier = 1f;
+
+        if (this.worldName == "Melancholia")
+        {
+            worldMultiplier = 1.5f;
+        }
+        else if (this.worldName == "Paranoia")
+        {
+            worldMultiplier = 1.3f;
+        }
+
         switch (structureType)
         {
             case "city":
@@ -220,16 +231,18 @@ public class World : MonoBehaviour
             case "factory":
                 PlayerStats.instance.buildingResources -= 2000;
                 currentStructuresSize++;
+                structureMultiplier = 1.5f;
                 break;
             case "lab":
                 PlayerStats.instance.buildingResources -= 7000;
                 currentStructuresSize++;
+                structureMultiplier = 2f;
                 break;
         }
 
         float baseTime = 10f;
         float minTime = 2f;
-        float constructionTime = Mathf.Clamp(baseTime * Mathf.Pow(0.5f, currentPopulation / 30000f), minTime, baseTime);
+        float constructionTime = Mathf.Clamp(baseTime * Mathf.Pow(0.5f, currentPopulation / 30000f), minTime, baseTime) * structureMultiplier * worldMultiplier;
 
         Debug.Log($"Construcción de {structureType} en proceso... Tiempo estimado: {constructionTime:F1} segundos.");
 
@@ -332,7 +345,7 @@ public class World : MonoBehaviour
 
     // Sliders visibility
 
-    public void SetSlidersVisibility (bool isVisible)
+    public void SetSlidersVisibility(bool isVisible)
     {
         isSelected = isVisible;
 
