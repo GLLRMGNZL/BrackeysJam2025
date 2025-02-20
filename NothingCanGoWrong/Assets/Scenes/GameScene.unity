@@ -960,7 +960,7 @@ MonoBehaviour:
   camAnim: {fileID: 963194230}
   explosionPrefab: {fileID: 6146545414153545494, guid: 61753401622c2a947a30e2147430e97d, type: 3}
   planetRenderer: {fileID: 165254660}
-  mat1: {fileID: 2100000, guid: 09f4f95bd7f21d54a86c9361ea4db2e0, type: 2}
+  mat1: {fileID: 2100000, guid: 27e16ab0ee7d7de4abf94e30c553ead3, type: 2}
   mat2: {fileID: 2100000, guid: 861bbb2a71742aa4bb76dc57d20e51b7, type: 2}
   steps: 15
   baseStepDuration: 1000
