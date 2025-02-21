@@ -3483,7 +3483,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -243, y: 175}
+  m_AnchoredPosition: {x: -242.99997, y: 175}
   m_SizeDelta: {x: -533.2794, y: -400.1781}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &690349007
@@ -6100,8 +6100,8 @@ MonoBehaviour:
   mat1: {fileID: 2100000, guid: d3b44a0fe41511d458e2bdb3ec7f55fa, type: 2}
   mat2: {fileID: 2100000, guid: 861bbb2a71742aa4bb76dc57d20e51b7, type: 2}
   steps: 15
-  baseStepDuration: 5
-  stepDuration: 5
+  baseStepDuration: 1000
+  stepDuration: 1000
 --- !u!114 &1123370379
 MonoBehaviour:
   m_ObjectHideFlags: 0

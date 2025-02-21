@@ -37,8 +37,10 @@ public class AudioManager : MonoBehaviour
             //s.source.outputAudioMixerGroup = s.group;
             Debug.Log(s.soundName);
         }
-
-        Play("menu_music");
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            Play("menu_music");
+        }
     }
 
     private void Update()
