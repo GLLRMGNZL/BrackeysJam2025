@@ -63,6 +63,7 @@ public class MouseClick : MonoBehaviour
                     camAnim.SetBool("isOpen", false);
 
                     Debug.Log("Objeto seleccionado: " + selection.gameObject.name);
+                    AudioManager.instance.Play("button_click");
                     World world = selection.gameObject.GetComponent<World>();
                     Player.instance.selectedWorld = world;
                     Player.instance.selectedWorld.isSelected = true;

@@ -915,6 +915,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 866383771}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: button_click
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &760848620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1012,7 +1024,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 760848617}
   m_CullTransparentMesh: 1
---- !u!1 &846743187
+--- !u!1 &866383770
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1020,8 +1032,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 846743188}
-  - component: {fileID: 846743189}
+  - component: {fileID: 866383772}
+  - component: {fileID: 866383771}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -1029,35 +1041,70 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &846743188
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 846743187}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 192.43478, y: 0.66069347, z: 23.157022}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &846743189
+--- !u!114 &866383771
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 846743187}
+  m_GameObject: {fileID: 866383770}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1415bd24c7d7358448f700d925b7019a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 0}
-  sounds: []
+  sounds:
+  - soundName: planet_explosion
+    clip: {fileID: 8300000, guid: 367063bcbb95b55428724ff5fc23a9f8, type: 3}
+    volume: 0.273
+    pitch: 0.87
+    loop: 0
+    source: {fileID: 0}
+  - soundName: button_click
+    clip: {fileID: 8300000, guid: 244604754ac6cbb408863f4c053adfea, type: 3}
+    volume: 1
+    pitch: 0.92
+    loop: 0
+    source: {fileID: 0}
+  - soundName: game_music
+    clip: {fileID: 8300000, guid: 7768ac8c476c09142a8012a60ea77cdb, type: 3}
+    volume: 0.988
+    pitch: 0.6
+    loop: 1
+    source: {fileID: 0}
+  - soundName: menu_music
+    clip: {fileID: 8300000, guid: 22fa304baa837c8478b92b80eb2ed0b7, type: 3}
+    volume: 0.566
+    pitch: 1.54
+    loop: 1
+    source: {fileID: 0}
+  - soundName: construction_completed
+    clip: {fileID: 8300000, guid: a28798f5f644e7948aeb679ab02cfaea, type: 3}
+    volume: 0.988
+    pitch: 1.01
+    loop: 0
+    source: {fileID: 0}
+  - soundName: warning_message
+    clip: {fileID: 8300000, guid: 8e3f821e6d129b24ca7f367792a5ae5b, type: 3}
+    volume: 0.657
+    pitch: 0.72
+    loop: 0
+    source: {fileID: 0}
+--- !u!4 &866383772
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866383770}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &987497709
 GameObject:
   m_ObjectHideFlags: 0
@@ -1150,6 +1197,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 866383771}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: button_click
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &987497712
@@ -1475,6 +1534,42 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 866383771}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: button_click
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 866383771}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: Stop
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: game_music
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 866383771}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: planet_explosion
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1219016516
@@ -2289,6 +2384,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 866383771}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: button_click
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1967234552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2569,7 +2676,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1240300718}
-  - {fileID: 846743188}
+  - {fileID: 866383772}
   - {fileID: 615255706}
   - {fileID: 342066072}
   - {fileID: 2014716188}

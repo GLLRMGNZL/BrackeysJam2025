@@ -281,15 +281,18 @@ public class World : MonoBehaviour
         switch (structureType)
         {
             case "city":
+                AudioManager.instance.Play("construction_completed");
                 cities++;
                 maxPopulation = Mathf.RoundToInt(maxPopulation * 1.15f);
                 break;
 
             case "factory":
+                AudioManager.instance.Play("construction_completed");
                 factories++;
                 break;
 
             case "lab":
+                AudioManager.instance.Play("construction_completed");
                 labs++;
                 break;
 
@@ -345,6 +348,7 @@ public class World : MonoBehaviour
     {
         if (PlayerStats.instance.buildingResources >= 10000)
         {
+            AudioManager.instance.Play("construction_completed");
             PlayerStats.instance.buildingResources -= 10000;
             maxStructuresSize += 3;
         }
@@ -402,6 +406,7 @@ public class World : MonoBehaviour
     private IEnumerator PlanetExplosion(Vector3 worldPosition)
     {
         Instantiate(explosionPrefab, worldPosition, Quaternion.identity);
+        AudioManager.instance.Play("planet_explosion");
         hasExploded = true;
         yield return new WaitForSeconds(0.2f);
         this.gameObject.SetActive(false);

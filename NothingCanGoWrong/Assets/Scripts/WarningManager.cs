@@ -54,6 +54,7 @@ public class WarningManager : MonoBehaviour
     private IEnumerator ShowWarning()
     {
         warningAnimator.SetBool("isOpen", true);
+        AudioManager.instance.Play("warning_message");
         yield return new WaitForSeconds(2f);
         warningAnimator.SetBool("isOpen", false);
     }

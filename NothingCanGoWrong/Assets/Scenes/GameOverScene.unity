@@ -168,6 +168,87 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &102030420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 102030422}
+  - component: {fileID: 102030421}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &102030421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102030420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1415bd24c7d7358448f700d925b7019a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - soundName: planet_explosion
+    clip: {fileID: 8300000, guid: 367063bcbb95b55428724ff5fc23a9f8, type: 3}
+    volume: 0.581
+    pitch: 0.89
+    loop: 0
+    source: {fileID: 0}
+  - soundName: button_click
+    clip: {fileID: 8300000, guid: 244604754ac6cbb408863f4c053adfea, type: 3}
+    volume: 1
+    pitch: 0.92
+    loop: 0
+    source: {fileID: 0}
+  - soundName: game_music
+    clip: {fileID: 8300000, guid: 7768ac8c476c09142a8012a60ea77cdb, type: 3}
+    volume: 0.944
+    pitch: 0.7
+    loop: 1
+    source: {fileID: 0}
+  - soundName: menu_music
+    clip: {fileID: 8300000, guid: 22fa304baa837c8478b92b80eb2ed0b7, type: 3}
+    volume: 0.566
+    pitch: 1.54
+    loop: 1
+    source: {fileID: 0}
+  - soundName: construction_completed
+    clip: {fileID: 8300000, guid: a28798f5f644e7948aeb679ab02cfaea, type: 3}
+    volume: 0.988
+    pitch: 1.01
+    loop: 0
+    source: {fileID: 0}
+  - soundName: warning_message
+    clip: {fileID: 8300000, guid: 8e3f821e6d129b24ca7f367792a5ae5b, type: 3}
+    volume: 0.657
+    pitch: 0.72
+    loop: 0
+    source: {fileID: 0}
+--- !u!4 &102030422
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102030420}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &172865105
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,7 +1022,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000030517578, y: -0.000015258789}
+  m_AnchoredPosition: {x: 0.000030517578, y: 0}
   m_SizeDelta: {x: 140.3467, y: 106.47}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1241278671
@@ -1382,7 +1463,7 @@ MonoBehaviour:
     colorScans:
       greenChannelMultiplier: 0.5
       redBlueChannelMultiplier: 0.159
-      sizeMultiplier: 7.6
+      sizeMultiplier: 7.83
     innerMonitorShineRadius: -0.087
     innerMonitorShineCurve: 10
 --- !u!21 &1716645802
@@ -1498,7 +1579,7 @@ Material:
     m_Colors:
     - _BorderTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorScans: {r: 0.5, g: 0.159, b: 7.6, a: 0}
+    - _ColorScans: {r: 0.5, g: 0.159, b: 7.83, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
 --- !u!1660057539 &9223372036854775807
@@ -1506,6 +1587,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 815475}
+  - {fileID: 102030422}
   - {fileID: 1626048484}
   - {fileID: 1281761784}
   - {fileID: 172972342}
