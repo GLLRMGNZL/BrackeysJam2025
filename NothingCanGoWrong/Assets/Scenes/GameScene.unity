@@ -4163,16 +4163,10 @@ MonoBehaviour:
     pitch: 0.92
     loop: 0
     source: {fileID: 0}
-  - soundName: game_music
-    clip: {fileID: 8300000, guid: 7768ac8c476c09142a8012a60ea77cdb, type: 3}
-    volume: 0.944
-    pitch: 0.8
-    loop: 1
-    source: {fileID: 0}
   - soundName: menu_music
-    clip: {fileID: 8300000, guid: 22fa304baa837c8478b92b80eb2ed0b7, type: 3}
-    volume: 0.566
-    pitch: 1.54
+    clip: {fileID: 8300000, guid: 2fcb86a69c99191408ff6cb76286a79e, type: 3}
+    volume: 0.715
+    pitch: 0.72
     loop: 1
     source: {fileID: 0}
   - soundName: construction_completed

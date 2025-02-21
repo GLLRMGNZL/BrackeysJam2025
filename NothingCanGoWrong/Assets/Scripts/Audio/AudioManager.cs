@@ -38,10 +38,7 @@ public class AudioManager : MonoBehaviour
             Debug.Log(s.soundName);
         }
 
-        if (SceneManager.GetActiveScene().name == "MainMenu")
-        {
-            Play("game_music");
-        }
+        Play("menu_music");
     }
 
     private void Update()
@@ -84,6 +81,18 @@ public class AudioManager : MonoBehaviour
         {
             s.source.Stop();
         }
+    }
+
+    public void PlayGameMusic()
+    {
+        Stop("menu_music");
+        StartCoroutine(PlayGameMusicCoroutine());
+    }
+
+    private IEnumerator PlayGameMusicCoroutine()
+    {
+        yield return new WaitForSeconds(2f);
+        Play("game_music");
     }
 
     // Audio settings

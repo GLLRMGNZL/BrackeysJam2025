@@ -210,16 +210,10 @@ MonoBehaviour:
     pitch: 0.92
     loop: 0
     source: {fileID: 0}
-  - soundName: game_music
-    clip: {fileID: 8300000, guid: 7768ac8c476c09142a8012a60ea77cdb, type: 3}
-    volume: 0.944
-    pitch: 0.7
-    loop: 1
-    source: {fileID: 0}
   - soundName: menu_music
-    clip: {fileID: 8300000, guid: 22fa304baa837c8478b92b80eb2ed0b7, type: 3}
-    volume: 0.566
-    pitch: 1.54
+    clip: {fileID: 8300000, guid: 2fcb86a69c99191408ff6cb76286a79e, type: 3}
+    volume: 0.715
+    pitch: 0.72
     loop: 1
     source: {fileID: 0}
   - soundName: construction_completed
@@ -232,6 +226,12 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 8e3f821e6d129b24ca7f367792a5ae5b, type: 3}
     volume: 0.657
     pitch: 0.72
+    loop: 0
+    source: {fileID: 0}
+  - soundName: gameover_music
+    clip: {fileID: 8300000, guid: bf997414daea1934991cc2a3530c0ad9, type: 3}
+    volume: 0.692
+    pitch: 1.05
     loop: 0
     source: {fileID: 0}
 --- !u!4 &102030422
@@ -1022,7 +1022,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000030517578, y: 0}
+  m_AnchoredPosition: {x: 0.000061035156, y: 0}
   m_SizeDelta: {x: 140.3467, y: 106.47}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1241278671
