@@ -52,6 +52,18 @@ public class AudioManager : MonoBehaviour
                 b.onClick.AddListener(() => Play("button_click"));
             }
         }
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            foreach (Button b in FindObjectsOfType<Button>())
+            {
+                b.onClick.AddListener(() => Play("button_click"));
+                if (b.name == "PlayButton")
+                {
+                    b.onClick.AddListener(() => Play("planet_explosion"));
+                    b.onClick.AddListener(() => PlayGameMusic());
+                }
+            }
+        }
     }
 
     public void Play(string name)

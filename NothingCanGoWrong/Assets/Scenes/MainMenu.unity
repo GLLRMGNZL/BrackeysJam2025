@@ -1642,6 +1642,12 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  - soundName: type_character
+    clip: {fileID: 8300000, guid: 4a07fa8e5378aea41b218b9143d3c9b3, type: 3}
+    volume: 0.56
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &866383772
 Transform:
   m_ObjectHideFlags: 0
@@ -2098,18 +2104,6 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: button_click
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 866383771}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: Stop
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: game_music
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 866383771}
