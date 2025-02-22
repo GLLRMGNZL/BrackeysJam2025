@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
         if (instance == null)
         {
+            Application.targetFrameRate = 60;
             instance = this;
         }
         else
