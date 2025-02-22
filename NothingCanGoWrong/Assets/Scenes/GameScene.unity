@@ -1285,11 +1285,16 @@ MonoBehaviour:
   animator: {fileID: 250332325}
   dialogues:
   - {fileID: 11400000, guid: 02b46d4d34f447244b8d39a2ae839c32, type: 2}
+  - {fileID: 11400000, guid: 6eb8e9ed620f8de4583a7c0272bfc524, type: 2}
+  - {fileID: 11400000, guid: 8072e953c4a30994e84a673f0e93e033, type: 2}
+  - {fileID: 11400000, guid: de2050b99dfdc82468de07b32ca43303, type: 2}
+  - {fileID: 11400000, guid: 61b18be3d3a1b464997a5a15d6c2651f, type: 2}
   currentDialogue: 0
   dialogueText: {fileID: 1766226819}
   typeSpeed: 0.05
   responseButtonPrefab: {fileID: 7463469468167720326, guid: d0d453ef6baa8bb49adf29572bf75583, type: 3}
   responseButtonContainer: {fileID: 246508058}
+  cutToBlack: {fileID: 1123549878}
 --- !u!95 &250332325
 Animator:
   serializedVersion: 5
@@ -3028,7 +3033,7 @@ MonoBehaviour:
   maxPopulation: 40000
   currentPopulation: 0
   currentStructuresSize: 0
-  maxStructuresSize: 0
+  maxStructuresSize: 3
   cities: 0
   factories: 0
   labs: 0
@@ -3042,7 +3047,7 @@ MonoBehaviour:
   mat1: {fileID: 2100000, guid: 09f4f95bd7f21d54a86c9361ea4db2e0, type: 2}
   mat2: {fileID: 2100000, guid: 861bbb2a71742aa4bb76dc57d20e51b7, type: 2}
   steps: 15
-  baseStepDuration: 1000
+  baseStepDuration: 350
   stepDuration: 1000
 --- !u!96 &602765395
 TrailRenderer:
@@ -6968,13 +6973,13 @@ MonoBehaviour:
   worldName: Nereo
   maxPopulation: 200000
   currentPopulation: 10000
-  currentStructuresSize: 0
+  currentStructuresSize: 3
   maxStructuresSize: 10
   cities: 1
   factories: 1
   labs: 1
   isSelected: 0
-  isSettled: 0
+  isSettled: 1
   activeProgressBars: []
   worldUIAnim: {fileID: 608686161}
   camAnim: {fileID: 963194230}
@@ -6983,8 +6988,8 @@ MonoBehaviour:
   mat1: {fileID: 2100000, guid: d3b44a0fe41511d458e2bdb3ec7f55fa, type: 2}
   mat2: {fileID: 2100000, guid: 861bbb2a71742aa4bb76dc57d20e51b7, type: 2}
   steps: 15
-  baseStepDuration: 1000
-  stepDuration: 1000
+  baseStepDuration: 3
+  stepDuration: 3
 --- !u!114 &1123370379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7003,6 +7008,81 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!1 &1123549878
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1123549879}
+  - component: {fileID: 1123549881}
+  - component: {fileID: 1123549880}
+  m_Layer: 5
+  m_Name: CutToBlack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1123549879
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123549878}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1349739222}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1123549880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123549878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1123549881
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123549878}
+  m_CullTransparentMesh: 1
 --- !u!1 &1169533519
 GameObject:
   m_ObjectHideFlags: 0
@@ -7876,7 +7956,7 @@ MonoBehaviour:
   maxPopulation: 500000
   currentPopulation: 0
   currentStructuresSize: 0
-  maxStructuresSize: 0
+  maxStructuresSize: 3
   cities: 0
   factories: 0
   labs: 0
@@ -7890,7 +7970,7 @@ MonoBehaviour:
   mat1: {fileID: 2100000, guid: 166b3ea324b4df246acef5f50ad1e569, type: 2}
   mat2: {fileID: 2100000, guid: 861bbb2a71742aa4bb76dc57d20e51b7, type: 2}
   steps: 15
-  baseStepDuration: 1000
+  baseStepDuration: 350
   stepDuration: 1000
 --- !u!96 &1322506374
 TrailRenderer:
@@ -8378,6 +8458,7 @@ RectTransform:
   - {fileID: 250332323}
   - {fileID: 2106294057}
   - {fileID: 1523419944}
+  - {fileID: 1123549879}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

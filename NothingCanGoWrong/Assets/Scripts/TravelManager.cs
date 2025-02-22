@@ -28,11 +28,11 @@ public class TravelManager : MonoBehaviour
 
     public void TravelAndSettle()
     {
-        if (PlayerStats.instance.travelResources >= 10000)
+        if (PlayerStats.instance.travelResources >= 5000)
         {
             Player.instance.selectedWorld.isSettled = true;
             Player.instance.selectedWorld.currentPopulation += 25;
-            PlayerStats.instance.travelResources -= 10000;
+            PlayerStats.instance.travelResources -= 5000;
             animator.SetBool("isOpen", false);
         }
         else

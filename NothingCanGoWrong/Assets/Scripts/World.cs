@@ -67,8 +67,6 @@ public class World : MonoBehaviour
 
     private void Update()
     {
-        // Material Slope: Depending on CurrentPopulation and currentStructuresSize, stepDuration diminishes
-        stepDuration = Mathf.Max(minStepDuration, baseStepDuration - (currentPopulation * currentStructuresSize) * 0.005f);
 
         if (!isTransitioning && !isTransitionComplete)
         {
@@ -158,7 +156,14 @@ public class World : MonoBehaviour
         // Increase if labs > 0
         float growth = 1;
         growth = labs * techLevelGrowthRate;
-        PlayerStats.instance.technologyLevel += (growth / 500);
+        if (PlayerStats.instance.technologyLevel < 1)
+        {
+            PlayerStats.instance.technologyLevel += (growth / 300);
+        }
+        else
+        {
+            PlayerStats.instance.technologyLevel += (growth / 500);
+        }
     }
 
     /* Build and delete structure
@@ -398,6 +403,9 @@ public class World : MonoBehaviour
             }
             yield return new WaitForSeconds(stepDuration);
         }
+
+        // Material Slope: Depending on CurrentPopulation and currentStructuresSize, stepDuration diminishes
+        stepDuration = Mathf.Max(minStepDuration, baseStepDuration - (currentPopulation * currentStructuresSize) * 0.005f);
 
         isTransitioning = false;
         isTransitionComplete = true;

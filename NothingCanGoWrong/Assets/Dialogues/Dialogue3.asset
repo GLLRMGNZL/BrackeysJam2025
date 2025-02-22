@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0079a19bc732254f9fd892663056e54, type: 3}
-  m_Name: Dialogue1
+  m_Name: Dialogue3
   m_EditorClassIdentifier: 
   rootNode:
     id: 1
-    dialogueText: "hi! i am the narrator. did you read the tutorial? i made it! if
-      you didn\xB4t, you should do it you know? i made it exclusively for you so...
-      yeah. but if you did, enjoy your stay! you can't do anything wrong"
+    dialogueText: well... i wasn't expecting that...
     responses:
-    - responseText: continue
+    - responseText: what now?
       nextNodeId: 2
   dialogueNodes:
-  - id: 
-    dialogueText: 
-    responses: []
+  - id: 2
+    dialogueText: do not worry! keep going, you are doing an amazing job at being
+      the boss... please don't fire me
+    responses:
+    - responseText: continue
+      nextNodeId: 3

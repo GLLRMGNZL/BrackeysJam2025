@@ -10,4 +10,6 @@ public class DialogueResponse
     public string responseText;
     [Header("Next Node")]
     public string nextNodeId; // Use an ID to reference the next node. It avoids recursive serialization
+    [Header("Events associated")]
+    public string[] associatedEvents;
 }

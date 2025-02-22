@@ -35,6 +35,8 @@ public class Narrator : MonoBehaviour
     public float typeSpeed = 5f;
     public GameObject responseButtonPrefab;
     public Transform responseButtonContainer;
+    public GameObject cutToBlack;
+
     private string fullText;
     private Queue<string> sentences = new Queue<string>();
     private bool isTyping = false;
@@ -53,21 +55,25 @@ public class Narrator : MonoBehaviour
         }
         if (PlayerStats.instance.technologyLevel > 1 && !dialogue2)
         {
+            currentDialogue = 1;
             StartDialogue(currentDialogue, dialogues[currentDialogue].rootNode);
             dialogue2 = true;
         }
         if (StarSystem.instance.planetsDestroyed == 1 && !dialogue3)
         {
+            currentDialogue = 2;
             StartDialogue(currentDialogue, dialogues[currentDialogue].rootNode);
             dialogue3 = true;
         }
         if (StarSystem.instance.planetsDestroyed == 2 && !dialogue4)
         {
+            currentDialogue = 3;
             StartDialogue(currentDialogue, dialogues[currentDialogue].rootNode);
             dialogue4 = true;
         }
         if (StarSystem.instance.planetsDestroyed == 3 && !dialogue5)
         {
+            currentDialogue = 4;
             StartDialogue(currentDialogue, dialogues[currentDialogue].rootNode);
             dialogue5 = true;
 
@@ -79,6 +85,8 @@ public class Narrator : MonoBehaviour
     {
         animator.SetBool("isOpen", true);
         // Set dialogue title and body dialogueText
+        dialogueText.text = "";
+        fullText = "";
         fullText = node.dialogueText;
         StartCoroutine(TypeText(node));
 
@@ -91,6 +99,14 @@ public class Narrator : MonoBehaviour
 
     public void SelectResponse(DialogueResponse response)
     {
+        // Execute Event if existing
+        if (response.associatedEvents != null && response.associatedEvents.Length > 0)
+        {
+            for (int i = 0; i < response.associatedEvents.Length; i++)
+            {
+                ExecuteEvent(response.associatedEvents[i]);
+            }
+        }
 
         DialogueNode nextNode = GetDialogueNodeById(response.nextNodeId);
 
@@ -121,7 +137,7 @@ public class Narrator : MonoBehaviour
         }
         Debug.Log($"No se encontró un nodo con el ID: {id}");
         animator.SetBool("isOpen", false);
-        currentDialogue++;
+
         return null;
     }
 
@@ -157,5 +173,15 @@ public class Narrator : MonoBehaviour
         }
         if (isTyping) isTyping = false;
         GenerateResponseButtons(node);
+    }
+
+    private void ExecuteEvent(string associatedEvent)
+    {
+        if (associatedEvent == "end")
+        {
+            cutToBlack.SetActive(true);
+            AudioManager.instance.Stop("game_music");
+            GameManager.instance.LoadLevel(2);
+        }
     }
 }

@@ -362,16 +362,16 @@ MonoBehaviour:
     pitch: 0.72
     loop: 0
     source: {fileID: 0}
-  - soundName: gameover_music
-    clip: {fileID: 8300000, guid: bf997414daea1934991cc2a3530c0ad9, type: 3}
-    volume: 0.692
-    pitch: 0.85
-    loop: 0
-    source: {fileID: 0}
   - soundName: type_character
     clip: {fileID: 8300000, guid: 4a07fa8e5378aea41b218b9143d3c9b3, type: 3}
     volume: 0.56
     pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - soundName: gameover_music
+    clip: {fileID: 8300000, guid: bf997414daea1934991cc2a3530c0ad9, type: 3}
+    volume: 0.65
+    pitch: 0.85
     loop: 0
     source: {fileID: 0}
 --- !u!4 &102030422

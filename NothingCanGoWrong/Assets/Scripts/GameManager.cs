@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(LoadLevel(1));
     }
 
-    IEnumerator LoadLevel(int level)
+    public IEnumerator LoadLevel(int level)
     {
         Debug.Log("LoadLevel" + level + " called");
         transition.SetTrigger("Start");
