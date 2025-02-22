@@ -31,7 +31,7 @@ public class TutorialMenu : MonoBehaviour
         tutorialLines.Add("in this game, every world is your world. you start in your home planet, nereo");
         tutorialLines.Add("build cities, factories, labs and make the population grow in order to settle the entire system");
         tutorialLines.Add("once you reach technology level 1, you will produce resources to travel other planets");
-        tutorialLines.Add("you will also be able to make more simultaneous buildings");
+        tutorialLines.Add("you will also be able to start more simultaneous buildings on each planet");
         tutorialLines.Add("once you travel to a new planet, you will be able to build on it");
         tutorialLines.Add("just select a planet with your mouse and use your screen interface to make it yours. you are the boss!");
         tutorialLines.Add("so, sit back, relax, make our species grow and remember:");

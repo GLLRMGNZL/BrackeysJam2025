@@ -100,6 +100,9 @@ public class WorldStatsUI : MonoBehaviour
             case "terraform":
                 actionCost.text = "10000";
                 break;
+            case "settle":
+                actionCost.text = "5000";
+                break;
         }
     }
 
