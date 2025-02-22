@@ -76,8 +76,6 @@ public class Narrator : MonoBehaviour
             currentDialogue = 4;
             StartDialogue(currentDialogue, dialogues[currentDialogue].rootNode);
             dialogue5 = true;
-
-            // Cut to Game Over Scene
         }
     }
 

@@ -382,13 +382,15 @@ public class World : MonoBehaviour
         if (!isTransitioning)
         {
             isTransitioning = true;
-            //StopCoroutine(TransitionCoroutine());
+            StopCoroutine(TransitionCoroutine());
+            isTransitioning = false;
             StartCoroutine(TransitionCoroutine());
         }
     }
 
     private IEnumerator TransitionCoroutine()
     {
+        Debug.Log(stepDuration);
         for (currentStep = 1; currentStep < steps; currentStep++)
         {
             float t = (float)currentStep / steps;
