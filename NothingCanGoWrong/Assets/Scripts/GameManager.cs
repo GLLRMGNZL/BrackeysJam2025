@@ -26,33 +26,21 @@ public class GameManager : MonoBehaviour
     public Animator transition;
     public Animator lightTransition;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (StarSystem.instance != null)
-        {
-            if (StarSystem.instance.planetsDestroyed == 3)
-            {
-                StartCoroutine(LoadLevel(2));
-            }
-        }
-    }
-
     public void ReturnToMenu()
     {
-        Debug.Log("ReturnToMenu called");
+        //Debug.Log("ReturnToMenu called");
         StartCoroutine(LoadLevel(0));
     }
     public void NewGame()
     {
-        Debug.Log("NewGame called");
+        //Debug.Log("NewGame called");
         StartCoroutine(LightTransition());
         StartCoroutine(LoadLevel(1));
     }
 
     public IEnumerator LoadLevel(int level)
     {
-        Debug.Log("LoadLevel" + level + " called");
+        //Debug.Log("LoadLevel" + level + " called");
         transition.SetTrigger("Start");
 
         yield return new WaitForSeconds(1f);

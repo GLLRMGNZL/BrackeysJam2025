@@ -1648,6 +1648,12 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - soundName: gameover_music
+    clip: {fileID: 8300000, guid: bf997414daea1934991cc2a3530c0ad9, type: 3}
+    volume: 0.65
+    pitch: 0.85
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &866383772
 Transform:
   m_ObjectHideFlags: 0
@@ -1925,8 +1931,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: text with a quick tutorial on how to play
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 51be472541bdbe144a27bda1b828cd0f, type: 2}
-  m_sharedMaterial: {fileID: 2931215370199868154, guid: 51be472541bdbe144a27bda1b828cd0f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e31b2713c0171f84fab7995dc77e25c9, type: 2}
+  m_sharedMaterial: {fileID: 3129035456057781621, guid: e31b2713c0171f84fab7995dc77e25c9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1956,7 +1962,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535

@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rootNode:
     id: 1
-    dialogueText: "hi! i am the narrator. did you read the tutorial? i made it! if
-      you didn\xB4t, you should do it you know? i made it exclusively for you so...
-      yeah. but if you did, enjoy your stay! you can't do anything wrong"
+    dialogueText: HI! I AM THE NARRATOR. DID YOU READ THE TUTORIAL? I MADE IT! IF
+      YOU DIDN'T, YOU SHOULD DO IT YOU KNOW? I MADE IT EXCLUSIVELY FOR YOU SO...
+      YEAH. BUT IF YOU DID, ENJOY YOUR STAY! YOU CAN'T DO ANYTHING WRONG.
     responses:
-    - responseText: continue
+    - responseText: CONTINUE
       nextNodeId: 2
+      associatedEvents: []
   dialogueNodes:
   - id: 
     dialogueText: 

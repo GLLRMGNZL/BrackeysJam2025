@@ -38,7 +38,7 @@ public class TravelManager : MonoBehaviour
         else
         {
             WarningManager.instance.Warning("resources");
-            Debug.Log("Recursos insuficientes!");
+            //Debug.Log("Recursos insuficientes!");
         }
     }
 }

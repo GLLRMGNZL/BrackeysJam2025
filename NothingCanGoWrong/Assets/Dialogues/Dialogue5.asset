@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rootNode:
     id: 1
-    dialogueText: well... this is awkward...
+    dialogueText: WELL... THIS IS AWKWARD
     responses:
-    - responseText: what now?
+    - responseText: NOW WHAT?
       nextNodeId: 2
       associatedEvents:
       - end

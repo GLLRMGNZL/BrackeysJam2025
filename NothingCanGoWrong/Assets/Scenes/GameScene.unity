@@ -1227,8 +1227,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 127.03154, y: -45.98}
-  m_SizeDelta: {x: 77.7346, y: 18.9139}
+  m_AnchoredPosition: {x: 110.259, y: -45.98}
+  m_SizeDelta: {x: 111.278, y: 18.914}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &250332322
 GameObject:
@@ -1289,6 +1289,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8072e953c4a30994e84a673f0e93e033, type: 2}
   - {fileID: 11400000, guid: de2050b99dfdc82468de07b32ca43303, type: 2}
   - {fileID: 11400000, guid: 61b18be3d3a1b464997a5a15d6c2651f, type: 2}
+  - {fileID: 11400000, guid: 1fca5d55329655b4ba16a7cd1875c330, type: 2}
   currentDialogue: 0
   dialogueText: {fileID: 1766226819}
   typeSpeed: 0.05
@@ -3047,8 +3048,8 @@ MonoBehaviour:
   mat1: {fileID: 2100000, guid: 09f4f95bd7f21d54a86c9361ea4db2e0, type: 2}
   mat2: {fileID: 2100000, guid: 861bbb2a71742aa4bb76dc57d20e51b7, type: 2}
   steps: 15
-  baseStepDuration: 350
-  stepDuration: 1000
+  baseStepDuration: 150
+  stepDuration: 150
 --- !u!96 &602765395
 TrailRenderer:
   serializedVersion: 3
@@ -4585,7 +4586,13 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 4a07fa8e5378aea41b218b9143d3c9b3, type: 3}
     volume: 0.56
     pitch: 1
-    loop: 1
+    loop: 0
+    source: {fileID: 0}
+  - soundName: gameover_music
+    clip: {fileID: 8300000, guid: bf997414daea1934991cc2a3530c0ad9, type: 3}
+    volume: 0.68
+    pitch: 0.85
+    loop: 0
     source: {fileID: 0}
 --- !u!4 &870641924
 Transform:
@@ -5413,7 +5420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   year: 0
   technologyLevel: 0
-  buildingResources: 150000
+  buildingResources: 15000
   travelResources: 2000
 --- !u!114 &974963777
 MonoBehaviour:
@@ -6988,8 +6995,8 @@ MonoBehaviour:
   mat1: {fileID: 2100000, guid: d3b44a0fe41511d458e2bdb3ec7f55fa, type: 2}
   mat2: {fileID: 2100000, guid: 861bbb2a71742aa4bb76dc57d20e51b7, type: 2}
   steps: 15
-  baseStepDuration: 50
-  stepDuration: 50
+  baseStepDuration: 670
+  stepDuration: 670
 --- !u!114 &1123370379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7970,8 +7977,8 @@ MonoBehaviour:
   mat1: {fileID: 2100000, guid: 166b3ea324b4df246acef5f50ad1e569, type: 2}
   mat2: {fileID: 2100000, guid: 861bbb2a71742aa4bb76dc57d20e51b7, type: 2}
   steps: 15
-  baseStepDuration: 350
-  stepDuration: 1000
+  baseStepDuration: 125
+  stepDuration: 125
 --- !u!96 &1322506374
 TrailRenderer:
   serializedVersion: 3
@@ -9941,8 +9948,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: test text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 51be472541bdbe144a27bda1b828cd0f, type: 2}
-  m_sharedMaterial: {fileID: 2931215370199868154, guid: 51be472541bdbe144a27bda1b828cd0f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e31b2713c0171f84fab7995dc77e25c9, type: 2}
+  m_sharedMaterial: {fileID: 3129035456057781621, guid: e31b2713c0171f84fab7995dc77e25c9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

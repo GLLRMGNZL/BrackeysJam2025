@@ -10,20 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0079a19bc732254f9fd892663056e54, type: 3}
-  m_Name: Dialogue3
+  m_Name: Dialogue6
   m_EditorClassIdentifier: 
   rootNode:
     id: 1
-    dialogueText: WELL... I WASN'T EXPECTING THAT...
+    dialogueText: YEAH, LOOK AT THOSE LITTLE NUMBERS GROW. YOU ARE DOING GREAT, KEEP
+      GOING AND MAYBE WE CAN START THINKING IN TRAVELLING TO OTHER STARS...
     responses:
-    - responseText: WHAT HAPPENED?
+    - responseText: CONTINUE
       nextNodeId: 2
       associatedEvents: []
   dialogueNodes:
-  - id: 2
-    dialogueText: LOOKS LIKE ONE OF YOUR WORLDS EXPLODED BUT DO NOT WORRY! KEEP GOING,
-      YOU ARE DOING AN AMAZING JOB AT BEING THE BOSS... PLEASE DON'T FIRE ME.
-    responses:
-    - responseText: CONTINUE
-      nextNodeId: 3
-      associatedEvents: []
+  - id: 
+    dialogueText: 
+    responses: []

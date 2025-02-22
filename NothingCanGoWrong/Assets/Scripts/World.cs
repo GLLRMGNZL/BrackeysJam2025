@@ -35,13 +35,12 @@ public class World : MonoBehaviour
     public Material mat1;
     public Material mat2;
     public int steps = 15;
-    public float baseStepDuration = 10000f;
-    public float stepDuration = 10000f;
+    public float baseStepDuration;
+    public float stepDuration;
 
     private float minStepDuration = 5f;
     private Material transitionMaterial;
     private int currentStep = 0;
-    private bool isTransitioning = false;
     private bool isTransitionComplete = false;
     private bool hasExploded = false;
 
@@ -62,16 +61,20 @@ public class World : MonoBehaviour
         // Material Slope
         transitionMaterial = new Material(mat1);
         planetRenderer.material = transitionMaterial;
-        StartTransition();
+        StartCoroutine(TransitionCoroutine());
     }
 
     private void Update()
     {
 
-        if (!isTransitioning && !isTransitionComplete)
-        {
-            StartTransition();
-        }
+        Debug.Log($"Step {currentStep}/{steps} - stepDuration: {stepDuration} update");
+
+        stepDuration = Mathf.Clamp(baseStepDuration - (currentPopulation * currentStructuresSize) * 0.005f, minStepDuration, baseStepDuration);
+
+        //if (!isTransitioning && !isTransitionComplete)
+        //{
+        //StartTransition();
+        //}
 
         if (isTransitionComplete)
         {
@@ -85,7 +88,13 @@ public class World : MonoBehaviour
             }
             // Instantiate explosion prefab and set World inactive
             if (!hasExploded)
+            {
+                if (StarSystem.instance.planetsDestroyed == 0 && PlayerStats.instance.travelResources < 5000)
+                {
+                    PlayerStats.instance.travelResources += 5000;
+                }
                 StartCoroutine(PlanetExplosion(worldPosition));
+            }
         }
     }
 
@@ -122,17 +131,22 @@ public class World : MonoBehaviour
 
     private void IncreasePlayerBuildingResources()
     {
+        if (factories == 0)
+        {
+            return;
+        }
+
         if (PlayerStats.instance.technologyLevel < 1)
         {
             float growth = 1;
             growth = factories * buildingResourcesGrowthRate;
-            PlayerStats.instance.buildingResources += growth;
+            PlayerStats.instance.buildingResources += (growth + 100);
         }
         else
         {
             float growth = 1;
             growth = factories * buildingResourcesGrowthRate * PlayerStats.instance.technologyLevel;
-            PlayerStats.instance.buildingResources += growth;
+            PlayerStats.instance.buildingResources += (growth + 100);
         }
 
     }
@@ -177,14 +191,14 @@ public class World : MonoBehaviour
         if (activeProgressBars.Count >= maxSimultaneousConstructions)
         {
             WarningManager.instance.Warning("construction");
-            Debug.Log("Límite de construcciones simultáneas alcanzado.");
+            //Debug.Log("Límite de construcciones simultáneas alcanzado.");
             return;
         }
 
         if (currentStructuresSize >= maxStructuresSize)
         {
             WarningManager.instance.Warning("space");
-            Debug.Log("¡No hay espacio en este planeta para más construcciones!");
+            //Debug.Log("¡No hay espacio en este planeta para más construcciones!");
         }
         else
         {
@@ -194,7 +208,7 @@ public class World : MonoBehaviour
                     if (PlayerStats.instance.buildingResources < 1000)
                     {
                         WarningManager.instance.Warning("resources");
-                        Debug.Log(PlayerStats.instance.buildingResources);
+                        //Debug.Log(PlayerStats.instance.buildingResources);
                         return;
                     }
                     break;
@@ -202,7 +216,7 @@ public class World : MonoBehaviour
                     if (PlayerStats.instance.buildingResources < 2000)
                     {
                         WarningManager.instance.Warning("resources");
-                        Debug.Log(PlayerStats.instance.buildingResources);
+                        //Debug.Log(PlayerStats.instance.buildingResources);
                         return;
                     }
                     break;
@@ -210,7 +224,7 @@ public class World : MonoBehaviour
                     if (PlayerStats.instance.buildingResources < 7000)
                     {
                         WarningManager.instance.Warning("resources");
-                        Debug.Log(PlayerStats.instance.buildingResources);
+                        //Debug.Log(PlayerStats.instance.buildingResources);
                         return;
                     }
                     break;
@@ -260,7 +274,7 @@ public class World : MonoBehaviour
         float minTime = 2f;
         float constructionTime = (Mathf.Clamp(baseTime * Mathf.Pow(0.5f, currentPopulation / 3000f), minTime, baseTime) * structureMultiplier * worldMultiplier) + 10f;
 
-        Debug.Log($"Construcción de {structureType} en proceso... Tiempo estimado: {constructionTime:F1} segundos.");
+        //Debug.Log($"Construcción de {structureType} en proceso... Tiempo estimado: {constructionTime:F1} segundos.");
 
         GameObject progressBar = Instantiate(WorldStatsUI.instance.progressBarPrefab, WorldStatsUI.instance.progressBarContainer);
         TextMeshProUGUI constructionText = progressBar.GetComponentInChildren<TextMeshProUGUI>();
@@ -318,7 +332,7 @@ public class World : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("No hay ciudades que derribar");
+                    //Debug.Log("No hay ciudades que derribar");
                 }
                 break;
             case "factory":
@@ -329,7 +343,7 @@ public class World : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("No hay fábricas que derribar");
+                    //Debug.Log("No hay fábricas que derribar");
                 }
                 break;
             case "lab":
@@ -340,7 +354,7 @@ public class World : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("No hay laboratorios que derribar");
+                    //Debug.Log("No hay laboratorios que derribar");
                 }
                 break;
             default: break;
@@ -359,7 +373,8 @@ public class World : MonoBehaviour
         }
         else
         {
-            Debug.Log("Not enough building resources.");
+            WarningManager.instance.Warning("resources");
+            //Debug.Log("Not enough building resources.");
         }
     }
 
@@ -376,42 +391,29 @@ public class World : MonoBehaviour
     }
 
     // Material Slope
-
-    public void StartTransition()
-    {
-        if (!isTransitioning)
-        {
-            isTransitioning = true;
-            StopCoroutine(TransitionCoroutine());
-            isTransitioning = false;
-            StartCoroutine(TransitionCoroutine());
-        }
-    }
-
     private IEnumerator TransitionCoroutine()
     {
-        Debug.Log(stepDuration);
-        for (currentStep = 1; currentStep < steps; currentStep++)
+        for (int currentStep = 1; currentStep <= steps; currentStep++)
         {
             float t = (float)currentStep / steps;
-
-            // Transition between material colors
             transitionMaterial.color = Color.Lerp(mat1.color, mat2.color, t);
 
-            // Transition between textures
             if (mat1.mainTexture != null && mat2.mainTexture != null)
             {
                 transitionMaterial.mainTexture = (t < 0.5f) ? mat1.mainTexture : mat2.mainTexture;
             }
-            yield return new WaitForSeconds(stepDuration);
+
+            Debug.Log($"Step {currentStep}/{steps} - t: {t} - stepDuration: {stepDuration}");
+
+            float elapsedTime = 0;
+            while (elapsedTime < stepDuration)
+            {
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
         }
-
-        // Material Slope: Depending on CurrentPopulation and currentStructuresSize, stepDuration diminishes
-        stepDuration = Mathf.Max(minStepDuration, baseStepDuration - (currentPopulation * currentStructuresSize) * 0.005f);
-
-        isTransitioning = false;
         isTransitionComplete = true;
-    }
+}
 
     private IEnumerator PlanetExplosion(Vector3 worldPosition)
     {
@@ -419,6 +421,10 @@ public class World : MonoBehaviour
         AudioManager.instance.Play("planet_explosion");
         hasExploded = true;
         yield return new WaitForSeconds(0.2f);
+        if (this.worldName == "Nereo")
+        {
+            PlayerStatsUI.instance.yearText.text = "?";
+        }
         this.gameObject.SetActive(false);
         StarSystem.instance.planetsDestroyed++;
     }

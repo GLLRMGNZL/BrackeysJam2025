@@ -14,16 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rootNode:
     id: 1
-    dialogueText: what? another planet blowing up? this is strange... almost as if
-      we were doing something wrong... but that is not possible! i mean, you are
-      the boss, do you think you are doing something wrong?
+    dialogueText: WHAT? ANOTHER PLANET BLOWING UP? THIS IS STRANGE... ALMOST AS IF
+      WE WERE DOING SOMETHING WRONG... BUT THAT IS NOT POSSIBLE! I MEAN, YOU ARE
+      THE BOSS, DO YOU THINK YOU ARE DOING SOMETHING WRONG?
     responses:
-    - responseText: no
+    - responseText: NO
       nextNodeId: 2
+      associatedEvents: []
   dialogueNodes:
   - id: 2
-    dialogueText: exactly! we can still travel to one planet, right? we are doing
-      good, keep going chief.
+    dialogueText: EXACTLY! WE CAN STILL TRAVEL TO ONE PLANET, RIGHT? WE ARE DOING
+      GOOD, KEEP GOING CHIEF.
     responses:
-    - responseText: continue
+    - responseText: CONTINUE
       nextNodeId: 3
+      associatedEvents: []

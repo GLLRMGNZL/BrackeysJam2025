@@ -8,40 +8,39 @@ using UnityEngine.Video;
 public class Credits : MonoBehaviour
 {
     public RectTransform contentPanel;
-    public float scrollSpeed = 5f;
-    public float duration = 25f;
+    public float duration;
     public RawImage videoScreen;
     public VideoPlayer videoPlayer;
 
     private Vector2 start;
     private Vector2 end;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         videoScreen.gameObject.SetActive(false);
         AudioManager.instance.Play("gameover_music");
 
         start = contentPanel.anchoredPosition;
-        start.y = -contentPanel.rect.height + 75f;
+        start.y = -contentPanel.rect.height;
 
         end = contentPanel.anchoredPosition;
-        end.y = 180;
+        end.y = 200;
 
         StartCoroutine(ScrollCredits());
     }
 
     private IEnumerator ScrollCredits()
     {
-        float startTime = Time.time;
-        float endTime = startTime + duration;
-        while (Time.time < duration)
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
         {
-            float t = (Time.time - startTime) / duration;
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedTime / duration);
             contentPanel.anchoredPosition = Vector2.Lerp(start, end, t);
-            yield return null;
+            yield return null; 
         }
-        Debug.Log("end credits");
+
         StartCoroutine(TurnOff());
     }
 

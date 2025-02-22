@@ -35,7 +35,7 @@ public class AudioManager : MonoBehaviour
             s.source.spatialBlend = 0f;
             s.source.loop = s.loop;
             //s.source.outputAudioMixerGroup = s.group;
-            Debug.Log(s.soundName);
+            //Debug.Log(s.soundName);
         }
         if (SceneManager.GetActiveScene().name == "MainMenu")
         {
@@ -72,7 +72,7 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.soundName == name);
         if (s == null)
         {
-            Debug.Log("The sound " + name + " was not found!");
+            //Debug.Log("The sound " + name + " was not found!");
             return;
         }
         else
@@ -88,7 +88,7 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.soundName == name);
         if (s == null)
         {
-            Debug.Log("The sound " + name + " was not found!");
+            //Debug.Log("The sound " + name + " was not found!");
             return;
         }
         else
@@ -108,26 +108,4 @@ public class AudioManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         Play("game_music");
     }
-
-    // Audio settings
-    /*public void setMasterVolume(float volume)
-    {
-        if (volume <= -30) volume = -80;
-        audioMixer.SetFloat("masterVolume", volume);
-        PlayerManager.instance.SetMasterVolume(volume);
-    }
-
-    public void setMusicVolume(float volume)
-    {
-        if (volume <= -30) volume = -80;
-        audioMixer.SetFloat("musicVolume", volume);
-        PlayerManager.instance.SetMusicVolume(volume);
-    }
-
-    public void setEffectsVolume(float volume)
-    {
-        if (volume <= -30) volume = -80;
-        audioMixer.SetFloat("effectsVolume", volume);
-        PlayerManager.instance.SetEffectsVolume(volume);
-    }*/
 }

@@ -44,6 +44,7 @@ public class Narrator : MonoBehaviour
     private bool dialogue3 = false;
     private bool dialogue4 = false;
     private bool dialogue5 = false;
+    private bool dialogue6 = false;
 
     private void Update()
     {
@@ -76,6 +77,12 @@ public class Narrator : MonoBehaviour
             currentDialogue = 4;
             StartDialogue(currentDialogue, dialogues[currentDialogue].rootNode);
             dialogue5 = true;
+        }
+        if (PlayerStatsUI.instance.techLevelSlider.value > 0.4 && !dialogue6)
+        {
+            currentDialogue = 5;
+            StartDialogue(currentDialogue, dialogues[currentDialogue].rootNode);
+            dialogue6 = true;
         }
     }
 
@@ -111,7 +118,7 @@ public class Narrator : MonoBehaviour
         // Continue to next node if exists
         if (nextNode != null && !nextNode.IsLastNode())
         {
-            Debug.Log("nextNode responses --> " + nextNode.responses.Count());
+            //Debug.Log("nextNode responses --> " + nextNode.responses.Count());
             StartDialogue(currentDialogue, nextNode);
         }
     }
@@ -122,7 +129,7 @@ public class Narrator : MonoBehaviour
 
         if (dialogues[currentDialogue].dialogueNodes == null || dialogues[currentDialogue].dialogueNodes.Count == 0)
         {
-            Debug.Log("La lista dialogueNodes de currentDialogue no está inicializada o está vacía.");
+            //Debug.Log("La lista dialogueNodes de currentDialogue no está inicializada o está vacía.");
             return null;
         }
 
@@ -133,7 +140,7 @@ public class Narrator : MonoBehaviour
                 return node;
             }
         }
-        Debug.Log($"No se encontró un nodo con el ID: {id}");
+        //Debug.Log($"No se encontró un nodo con el ID: {id}");
         animator.SetBool("isOpen", false);
 
         return null;
@@ -179,7 +186,7 @@ public class Narrator : MonoBehaviour
         {
             cutToBlack.SetActive(true);
             AudioManager.instance.Stop("game_music");
-            GameManager.instance.LoadLevel(2);
+            StartCoroutine(GameManager.instance.LoadLevel(2));
         }
     }
 }

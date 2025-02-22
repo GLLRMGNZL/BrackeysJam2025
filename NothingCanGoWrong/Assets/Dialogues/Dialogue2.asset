@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rootNode:
     id: 1
-    dialogueText: so you have reached a new technology level. congratulations! you
-      will notice you produce travel resources now. use them to settle other planets!
-      or don't, you are the boss, but you should settle them, actually.
+    dialogueText: "SO YOU HAVE REACHED A NEW TECHNOLOGY LEVEL. CONGRATULATIONS! YOU
+      WILL NOTICE YOU PRODUCE TRAVEL RESOURCES NOW. USE THEM TO SETTLE OTHER PLANETS!
+      OR DON\u2019T, YOU ARE THE BOSS, BUT YOU SHOULD SETTLE THEM, ACTUALLY."
     responses:
-    - responseText: continue
+    - responseText: CONTINUE
       nextNodeId: 2
+      associatedEvents: []
   dialogueNodes:
   - id: 
     dialogueText: 

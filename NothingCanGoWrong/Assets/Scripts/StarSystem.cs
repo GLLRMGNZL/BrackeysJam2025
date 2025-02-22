@@ -38,10 +38,6 @@ public class StarSystem : MonoBehaviour
     {
         Gravity();
 
-        if (planetsDestroyed == 3)
-        {
-            Debug.Log("End game");
-        }
     }
 
     private void Gravity()
