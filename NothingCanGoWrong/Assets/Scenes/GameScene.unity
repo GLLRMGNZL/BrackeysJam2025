@@ -3048,8 +3048,8 @@ MonoBehaviour:
   mat1: {fileID: 2100000, guid: 09f4f95bd7f21d54a86c9361ea4db2e0, type: 2}
   mat2: {fileID: 2100000, guid: 861bbb2a71742aa4bb76dc57d20e51b7, type: 2}
   steps: 15
-  baseStepDuration: 150
-  stepDuration: 150
+  baseStepDuration: 160
+  stepDuration: 160
 --- !u!96 &602765395
 TrailRenderer:
   serializedVersion: 3
@@ -7977,8 +7977,8 @@ MonoBehaviour:
   mat1: {fileID: 2100000, guid: 166b3ea324b4df246acef5f50ad1e569, type: 2}
   mat2: {fileID: 2100000, guid: 861bbb2a71742aa4bb76dc57d20e51b7, type: 2}
   steps: 15
-  baseStepDuration: 125
-  stepDuration: 125
+  baseStepDuration: 80
+  stepDuration: 80
 --- !u!96 &1322506374
 TrailRenderer:
   serializedVersion: 3
